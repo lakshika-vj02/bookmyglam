@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <div className="bg-gray-800 text-white p-4 text-center">
-      © 2026 Makeup Booking
-    </div>
+    <footer className="bg-black text-white text-center py-4 mt-10">
+      <p>© 2026 BookMyGlam | All Rights Reserved</p>
+    </footer>
   );
 }

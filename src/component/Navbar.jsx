@@ -2,33 +2,26 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav style={{
-      backgroundColor: "#000",
-      color: "#fff",
-      padding: "12px 40px",
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center"
-    }}>
+    <nav className="bg-black text-white w-full">
+      {/* Container to handle padding and max-width */}
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        
+        {/* LEFT → Logo */}
+        <div className="flex-shrink-0">
+          <h1 className="text-2xl font-bold tracking-tight">
+            💄 BookMyGlam
+          </h1>
+        </div>
 
-      {/* Logo */}
-      <h1 style={{ fontSize: "20px", fontWeight: "bold" }}>
-        💄 BookMyGlam
-      </h1>
+        {/* RIGHT → Links */}
+        <div className="hidden md:flex items-center gap-8">
+          <Link to="/home" className="hover:text-pink-400 transition-colors">Home</Link>
+          <Link to="/artists" className="hover:text-pink-400 transition-colors">Artists</Link>
+          <Link to="/services" className="hover:text-pink-400 transition-colors">Services</Link>
+          <Link to="/booking" className="hover:text-pink-400 transition-colors">Booking</Link>
+        </div>
 
-      {/* Links */}
-      <div style={{
-        display: "flex",
-        gap: "30px",
-        fontSize: "16px"
-      }}>
-        <Link to="/home" style={{ color: "white", textDecoration: "none" }}>Home</Link>
-        <Link to="/artists" style={{ color: "white", textDecoration: "none" }}>Artists</Link>
-        <Link to="/services" style={{ color: "white", textDecoration: "none" }}>Services</Link>
-        <Link to="/booking" style={{ color: "white", textDecoration: "none" }}>Booking</Link>
-        <Link to="/profile" style={{ color: "white", textDecoration: "none" }}>profile</Link>
       </div>
-
     </nav>
   );
 }
