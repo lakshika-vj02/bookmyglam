@@ -41,6 +41,11 @@ export default function Navbar() {
         
         {/* LEFT: Logo Area */}
         <div>
+          <img 
+      src="/makeuplogo.png" 
+      alt="logo" 
+      style={{ height: "40px" }}
+    />
           <h1 style={logoStyle}>
             💄 BookMyGlam
           </h1>

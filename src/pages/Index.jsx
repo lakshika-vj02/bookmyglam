@@ -5,32 +5,32 @@ function Index() {
     <div className="container-fluid p-0">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+     <img 
+      src="/makeuplogo.png" 
+      alt="logo" 
+      style={{ height: "60px" }}
+    />
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
+        {/* </div><ul class="navbar-nav mx-auto mb-2 mb-lg-0"></ul> */}
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link active" aria-current="page" href="#">Artist</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            {/* <li><hr class="dropdown-divider"></li> */}
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#">service</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link" href="#">My Booking</a>
         </li>
+        
+        
       </ul>
       <form class="d-flex">
         {/* <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> */}
@@ -43,7 +43,7 @@ function Index() {
       <section id="home" className="bg-dark text-white text-center py-5">
         <div className="container py-5">
           <h1 className="display-3 fw-bold mb-4">Welcome to BookMyGlam</h1>
-          <p className="lead mb-4">Ab ghar baithe payein professional makeup artists aur beauty services.</p>
+          <p className="lead mb-4">Find and book professional makeup artists for every special occasion.</p>
           <button className="btn btn-lg px-5" style={{backgroundColor: "#f472b6", color: "white"}}>
             Explore Services
           </button>
@@ -57,9 +57,9 @@ function Index() {
             <h2 className="fw-bold">About Us</h2>
             <hr className="w-25 mb-4" style={{borderTop: "3px solid #f472b6"}} />
             <p className="text-muted">
-              BookMyGlam Udaipur ka sabse bharosemand makeup appointment platform hai. 
-              Hum professional artists aur customers ko ek hi jagah laate hain taaki aapka 
-              special day aur bhi khas ban sake.
+              BookMyGlam is a trusted makeup booking platform that connects customers with professional makeup artists.
+               We aim to make your special moments
+               memorable by providing easy booking, reliable services, and high-quality beauty experiences.
             </p>
           </div>
           <div className="col-md-6 text-center">
@@ -76,7 +76,8 @@ function Index() {
         <div className="container">
           <div className="text-center mb-5">
             <h2 className="fw-bold">Contact Us</h2>
-            <p>Koi sawal hai? Humein message karein.</p>
+            <p>Have questions or need help with booking? We're here for you! 
+Reach out to us anytime and our team will assist you with the best possible solutions.</p>
           </div>
           <div className="row justify-content-center">
             <div className="col-md-8 bg-white p-4 shadow-sm rounded">

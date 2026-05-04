@@ -8,9 +8,9 @@ function AdminDashboard() {
   useEffect(() => {
     const role = localStorage.getItem("role");
 
-    if (role !== "admin") {
-      navigate("/");   // ❌ agar admin nahi → login page
-    }
+    // if (role !== "admin") {
+    //   navigate("/");   // ❌ agar admin nahi → login page
+    // }
   }, []);
 
   return (
