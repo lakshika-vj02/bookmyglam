@@ -28,6 +28,14 @@ function App() {
           </Layout>
         }
       />
+      <Route
+        path="/services"
+        element={
+          <Layout>
+            <Services />
+          </Layout>
+        }
+      />
 
       <Route
         path="/artists"
@@ -38,14 +46,7 @@ function App() {
         }
       />
 
-      <Route
-        path="/services"
-        element={
-          <Layout>
-            <Services />
-          </Layout>
-        }
-      />
+      
 
       <Route
         path="/booking"

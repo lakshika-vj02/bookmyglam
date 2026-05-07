@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+.hero-section {
+  background-image: linear-gradient(
+      rgba(0,0,0,0.5),
+      rgba(0,0,0,0.5)
+    ),
+    url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9");
+
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  text-align: center;
+}
+.hero-title {
+  font-size: 70px;
+  font-weight: bold;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.highlight {
+  color: #ff69b4;
+  font-style: italic;
+}

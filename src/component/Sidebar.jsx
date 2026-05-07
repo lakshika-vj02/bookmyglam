@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import Sidebar from "../component/Sidebar";
 
@@ -74,7 +75,7 @@ function AdminDashboard() {
               <div className="card text-center shadow">
                 <div className="card-body">
                   <h6>Total Services</h6>
-                  <h3>{services}</h3>
+                  <h3>{services}</h3>–
                 </div>
               </div>
             </div>

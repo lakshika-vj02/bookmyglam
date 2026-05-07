@@ -65,11 +65,15 @@ function Login() {
         {/* ❌ ROLE FIELD HATA DIYA */}
 
         <button
-          className="btn btn-primary w-100 mb-3"
-          onClick={handleLogin}
-        >
-          Login
-        </button>
+  className="btn btn-primary w-100 mb-3"
+  onClick={handleLogin}
+  style={{
+    backgroundColor: "#f472b6",
+    borderColor: "#f472b6"
+  }}
+>
+  Login
+</button>
 
         <p className="text-center">
           Don't have an account?

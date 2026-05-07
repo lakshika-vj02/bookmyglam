@@ -1,25 +1,39 @@
-import React, { useState } from "react";
-import { artists } from "../Data/artists"; 
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import ArtistCard from "../component/ArtistCard";
 
-function Home() {
+function Artists() {
+
+  const [artists, setArtists] = useState([]);
   const [search, setSearch] = useState("");
-  const navigate = useNavigate();
 
-  // 🔍 Filter
+  // FETCH DATABASE DATA
+  useEffect(() => {
+
+    fetch("http://localhost:5000/artists")
+      .then((res) => res.json())
+      .then((data) => setArtists(data))
+      .catch((err) => console.log(err));
+      console.log(artists);
+
+  }, []);
+
+  // SEARCH FILTER
   const filteredArtists = artists.filter((artist) =>
-    artist.services.join(" ").toLowerCase().includes(search.toLowerCase())
+    artist.speciality
+      ?.toLowerCase()
+      .includes(search.toLowerCase())
   );
 
   return (
+
     <div className="p-6">
 
-      {/* ✅ HEADING */}
+      {/* HEADING */}
       <h2 className="text-2xl font-bold text-center mb-6">
         Choose Your Artist 💄
       </h2>
 
-      {/* ✅ SEARCH BAR */}
+      {/* SEARCH */}
       <input
         type="text"
         placeholder="Search (Bridal, Party...)"
@@ -27,36 +41,23 @@ function Home() {
         onChange={(e) => setSearch(e.target.value)}
       />
 
-      {/* ✅ ARTIST CARDS */}
+      {/* CARDS */}
       <div className="grid md:grid-cols-3 gap-6">
+
         {filteredArtists.map((artist) => (
-          <div
+
+          <ArtistCard
             key={artist.id}
-            className="bg-white shadow rounded-xl p-4"
-          >
-            {/* Name */}
-            <h3 className="text-lg font-semibold">
-              {artist.name}
-            </h3>
+            artist={artist}
+          />
 
-            {/* Services */}
-            <p className="text-gray-500 text-sm">
-              {artist.services.join(", ")}
-            </p>
-
-            {/* ✅ BOOK BUTTON */}
-            <button
-              onClick={() => navigate("/booking", { state: artist })}
-              className="mt-3 bg-pink-500 text-white px-4 py-2 rounded-lg w-full"
-            >
-              Book Now
-            </button>
-          </div>
         ))}
+
       </div>
 
     </div>
+
   );
 }
 
-export default Home;
+export default Artists;

@@ -33,14 +33,16 @@ function Navbar() {
             <li className="nav-item">
               <Link className="nav-link fw-bold" to="/">Home</Link>
             </li>
+            
+            <li className="nav-item">
+              <Link className="nav-link fw-bold" to="/services">Service</Link>
+            </li>
 
             <li className="nav-item">
               <Link className="nav-link fw-bold" to="/artists">Artist</Link>
             </li>
 
-            <li className="nav-item">
-              <Link className="nav-link fw-bold" to="/services">Service</Link>
-            </li>
+        
 
             <li className="nav-item">
               <Link className="nav-link fw-bold" to="/booking">My Booking</Link>
@@ -49,10 +51,16 @@ function Navbar() {
           </ul>
 
           {/* LOGIN BUTTON */}
-          <Link className="btn btn-primary" to="/login">
-            Login
-          </Link>
-
+          <Link
+         className="btn btn-primary"
+          to="/login"
+          style={{
+          backgroundColor: "#f472b6",
+          borderColor: "#f472b6"
+        }}
+>
+  Login
+</Link>
         </div>
       </div>
     </nav>
