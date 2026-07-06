@@ -40,10 +40,10 @@ function AdminDashboard() {
     <div className="container-fluid">
       <div className="row">
 
-        {/* Sidebar */}
-        <div className="col-md-2 p-0">
-          <Sidebar />
-        </div>
+     
+<div className="col-md-2 p-0">
+  <Sidebar />
+</div>
 
         {/* Main Content */}
         <div className="col-md-10 p-4">
@@ -75,7 +75,7 @@ function AdminDashboard() {
               <div className="card text-center shadow">
                 <div className="card-body">
                   <h6>Total Services</h6>
-                  <h3>{services}</h3>–
+                  <h3>{services}</h3>
                 </div>
               </div>
             </div>

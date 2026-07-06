@@ -15,9 +15,16 @@ function Index() {
   return (
     <div className="container-fluid p-0">
 
-      {/* HOME SECTION */}
-      <section className="bg-dark text-white text-center py-5">
-
+      <section
+  className="text-white text-center d-flex align-items-center"
+  style={{
+    minHeight: "90vh",
+    backgroundImage:
+      "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9')",
+    backgroundSize: "cover",
+    backgroundPosition: "center"
+  }}
+>
         <div className="container py-5">
 
           <h1 className="hero-title">
@@ -59,12 +66,13 @@ function Index() {
         <div className="text-center mb-5">
 
           <h2 className="fw-bold">
-            Popular Services
+            Popular Artists
           </h2>
 
-          <p className="text-muted">
-            Explore our most loved beauty services
-          </p>
+          <p className="text-muted fst-italic">
+  Transform your look with skilled artists
+  who create beauty that feels unforgettable.
+</p>
 
         </div>
 
@@ -82,7 +90,7 @@ function Index() {
                 <div className="card shadow-sm h-100">
 
                   <img
-                    src="https://via.placeholder.com/300"
+                    src={`http://localhost:5000/${artist.img}`}
                     className="card-img-top"
                     alt={artist.name}
                     style={{
@@ -102,7 +110,7 @@ function Index() {
                     </p>
 
                     <Link
-                      to="/services"
+                      to="/Artists"
                       className="btn w-100"
                       style={{
                         backgroundColor: "#f472b6",
@@ -133,77 +141,133 @@ function Index() {
       </section>
 
       {/* CONTACT SECTION */}
-      <section className="bg-light py-5">
+      {/* CONTACT + CTA SECTION */}
+<section
+  className="py-5"
+  style={{
+    background:
+      "linear-gradient(to right, #fff1f2, #fdf2f8)"
+  }}
+>
 
-        <div className="container">
+  <div className="container">
 
-          <div className="text-center mb-5">
+    <div className="row align-items-center">
 
-            <h2 className="fw-bold">
-              Contact Us
-            </h2>
+      {/* LEFT CONTENT */}
+      <div className="col-md-6 mb-4">
 
-            <p>
-              Have questions or need help with booking?
-              We're here for you!
-            </p>
+        <h1
+          className="fw-bold mb-4"
+          style={{
+            fontSize:"55px"
+          }}
+        >
+          Book Your
+          Dream Look ✨
+        </h1>
 
-          </div>
+        <p
+          className="text-muted mb-4"
+          style={{
+            fontSize:"18px"
+          }}
+        >
+          Professional makeup artists,
+          bridal makeover, hair styling,
+          nail art and premium beauty
+          services for every occasion.
+        </p>
 
-          <div className="row justify-content-center">
-
-            <div className="col-md-8 bg-white p-4 shadow-sm rounded">
-
-              <div className="row text-center">
-
-                <div className="col-md-6">
-                  <p className="fw-bold">Email:</p>
-                  <p>support@bookmyglam.com</p>
-                </div>
-
-                <div className="col-md-6">
-                  <p className="fw-bold">Call:</p>
-                  <p>+91 98765 43210</p>
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* CTA SECTION */}
-      <section className="container text-center py-5">
-
-        <h2 className="mb-4">
-          Join Us
-        </h2>
-
-        <div className="d-flex justify-content-center gap-3">
+        <div className="d-flex gap-3 flex-wrap">
 
           <Link
-            to="/login"
-            className="btn btn-outline-dark px-4"
+            to="/services"
+            className="btn px-4 py-3"
+            style={{
+              background:"#f472b6",
+              color:"white",
+              borderRadius:"12px",
+              fontWeight:"600"
+            }}
           >
-            Login
+            Explore Services
           </Link>
 
           <Link
             to="/signup"
-            className="btn btn-dark px-4"
+            className="btn btn-dark px-4 py-3"
+            style={{
+              borderRadius:"12px"
+            }}
           >
-            Register
+            Join Now
           </Link>
 
         </div>
 
-      </section>
+      </div>
+
+      {/* RIGHT CARD */}
+      <div className="col-md-6">
+
+        <div
+          className="bg-white p-5 shadow-lg"
+          style={{
+            borderRadius:"25px"
+          }}
+        >
+
+          <h3 className="fw-bold mb-4">
+            Contact Us
+          </h3>
+
+          <div className="mb-4">
+
+            <h6 className="fw-bold">
+              📧 Email
+            </h6>
+
+            <p className="text-muted">
+              support@bookmyglam.com
+            </p>
+
+          </div>
+
+          <div className="mb-4">
+
+            <h6 className="fw-bold">
+              📞 Call
+            </h6>
+
+            <p className="text-muted">
+              +91 98765 43210
+            </p>
+
+          </div>
+
+          <div>
+
+            <h6 className="fw-bold">
+              📍 Location
+            </h6>
+
+            <p className="text-muted">
+              Jaipur, Rajasthan
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
+
+  </div>
+
+</section>
+</div>
   );
 }
 

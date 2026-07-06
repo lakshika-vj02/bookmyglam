@@ -11,6 +11,8 @@ import Profile from "./pages/Profile";
 import AdminDashboard from "./pages/AdminDashboard";
 import Artists from "./pages/Artists";
 
+
+
 function App() {
   return (
     <Routes>
@@ -46,16 +48,14 @@ function App() {
         }
       />
 
-      
-
-      <Route
-        path="/booking"
-        element={
-          <Layout>
-            <Booking />
-          </Layout>
-        }
-      />
+    <Route
+  path="/booking"
+  element={
+    <Layout>
+      <Booking />
+    </Layout>
+  }
+/>
 
       <Route
         path="/profile"
@@ -69,9 +69,9 @@ function App() {
       <Route
         path="/admin"
         element={
-          <Layout>
+        
             <AdminDashboard />
-          </Layout>
+      
         }
       />
 

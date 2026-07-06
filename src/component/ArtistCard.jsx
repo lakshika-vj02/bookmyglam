@@ -6,53 +6,81 @@ export default function ArtistCard({ artist }) {
 
   return (
 
-    <div className="bg-white rounded-xl shadow p-4">
+    <div className="card shadow-lg border-0 rounded-4 overflow-hidden h-100">
 
       {/* IMAGE */}
       <img
-    src={`http://localhost:5000/${artist.img}`}
-    alt={artist.name}
-    className="w-100 rounded"
-    style={{
-    height: "250px",
-    objectFit: "cover"
-     }}
-    />
+        src={`http://localhost:5000/${artist.img}`}
+        alt={artist.name}
+        className="card-img-top"
+        style={{
+          height: "250px",
+          objectFit: "cover"
+        }}
+      />
 
-      {/* NAME */}
-      <h2 className="text-lg font-bold mt-2">
-        {artist.name}
-      </h2>
+      <div className="card-body">
 
-      {/* SPECIALITY */}
-      <p className="text-sm text-gray-500">
-        {artist.speciality}
-      </p>
+        {/* NAME */}
+        <h4 className="card-title fw-bold">
+          {artist.name}
+        </h4>
+        
 
-      {/* EXPERIENCE */}
-      <p className="text-sm text-gray-500">
-        Experience: {artist.experience}
-      </p>
+        {/* SPECIALITY */}
+        <p className="text-muted mb-2">
+          {artist.speciality}
+        </p>
+        {artist.offer_price ? (
+  <>
+    <span className="text-decoration-line-through text-muted">
+      ₹{artist.price}
+    </span>
 
-      {/* RATING */}
-      <p className="text-sm text-yellow-500">
-        ⭐ {artist.rating}
-      </p>
+    <span className="text-danger ms-2 fw-bold">
+      ₹{artist.offer_price}
+    </span>
+  </>
+) : (
+  <p>₹{artist.price}</p>
+)}
 
-      {/* CATEGORY */}
-      <p className="text-sm text-pink-500">
-        {artist.category}
-      </p>
 
-      {/* BUTTON */}
-      <button
-        onClick={() =>
-          navigate("/booking", { state: artist })
-        }
-        className="mt-3 bg-pink-500 text-white px-4 py-2 rounded-lg w-full"
-      >
-        Book Now
-      </button>
+<p className="text-secondary">
+  Duration: {artist.duration}
+</p>
+
+        {/* EXPERIENCE */}
+        <p className="mb-2">
+          Experience: {artist.experience}
+        </p>
+
+        {/* RATING */}
+        <p className="text-warning fw-semibold mb-2">
+          ⭐ {artist.rating}
+        </p>
+
+        {/* CATEGORY */}
+        <p className="text-danger mb-3">
+          {artist.category}
+        </p>
+
+        {/* BUTTON */}
+        <button
+  onClick={() =>
+    navigate("/booking", { state: artist })
+  }
+  className="btn w-100 rounded-pill"
+  style={{
+    backgroundColor: "#f472b6",
+    border: "none",
+    color: "white"
+  }}
+>
+  Book Now
+</button>
+
+      </div>
 
     </div>
 

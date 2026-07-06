@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ArtistCard from "../component/ArtistCard";
+import "./Artists.css";
 
 function Artists() {
 
@@ -13,23 +14,31 @@ function Artists() {
       .then((res) => res.json())
       .then((data) => setArtists(data))
       .catch((err) => console.log(err));
-      console.log(artists);
 
   }, []);
 
   // SEARCH FILTER
-  const filteredArtists = artists.filter((artist) =>
-    artist.speciality
-      ?.toLowerCase()
-      .includes(search.toLowerCase())
+const filteredArtists = artists.filter((artist) => {
+
+  const speciality = artist.speciality
+    ?.toLowerCase();
+
+  const searchWords = search
+    .toLowerCase()
+    .split(" ");
+
+  return searchWords.some((word) =>
+    speciality.includes(word)
   );
 
+});
   return (
-
-    <div className="p-6">
+     <div className="artist-page">
+    <div className="container py-5">
+      
 
       {/* HEADING */}
-      <h2 className="text-2xl font-bold text-center mb-6">
+      <h2 className="text-center fw-bold mb-4">
         Choose Your Artist 💄
       </h2>
 
@@ -37,24 +46,26 @@ function Artists() {
       <input
         type="text"
         placeholder="Search (Bridal, Party...)"
-        className="border p-2 w-full mb-6 rounded"
+        className="form-control mb-5"
         onChange={(e) => setSearch(e.target.value)}
       />
 
       {/* CARDS */}
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="row g-4">
 
         {filteredArtists.map((artist) => (
 
-          <ArtistCard
-            key={artist.id}
-            artist={artist}
-          />
+          <div className="col-lg-4 col-md-6" key={artist.id}>
+
+            <ArtistCard artist={artist} />
+
+          </div>
 
         ))}
 
       </div>
 
+    </div>
     </div>
 
   );
