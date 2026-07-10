@@ -10,8 +10,8 @@ export default function ArtistCard({ artist }) {
 
       {/* IMAGE */}
       <img
-        src={`http://localhost:5000/${artist.img}`}
-        alt={artist.name}
+        src={`http://localhost:5000/images/${artist.profile_image}`}
+        alt={artist.profile_image}
         className="card-img-top"
         style={{
           height: "250px",

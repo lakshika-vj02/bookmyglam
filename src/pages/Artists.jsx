@@ -20,16 +20,11 @@ function Artists() {
   // SEARCH FILTER
 const filteredArtists = artists.filter((artist) => {
 
-  const speciality = artist.speciality
-    ?.toLowerCase();
+    if (!search.trim()) return true;
 
-  const searchWords = search
-    .toLowerCase()
-    .split(" ");
+  const specialty = (artist.specialty || "").toLowerCase();
 
-  return searchWords.some((word) =>
-    speciality.includes(word)
-  );
+  return specialty.includes(search.toLowerCase());
 
 });
   return (

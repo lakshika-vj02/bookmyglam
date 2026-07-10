@@ -1,0 +1,13 @@
+.view-category-btn {
+  margin-top: 8px;
+  background: #f472b6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin-top: 8px;
+}
+
+.view-category-btn:hover {
+  background: #e754a6;
+  color: white;
+}

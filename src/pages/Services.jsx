@@ -131,6 +131,19 @@ console.log("Services State:", services);
 >
   View Artists
 </button>
+<button
+    className="view-category btn btn-outline-pink w-100"
+    onClick={() => navigate(`/subcategory/${service.id}`)}
+   className="btn w-100 mb-2 mt-2"
+  style={{
+    background: "#f472b6",
+    color: "#fff",
+    border: "none",
+    borderRadius: "10px",
+  }}
+>
+    <i className="bi bi-grid-3x3-gap"></i> View Categories
+</button>
 
                 </div>
 

@@ -84,13 +84,13 @@ function Index() {
 
               <div
                 className="col-md-4 mb-4"
-                key={artist._id}
+                key={artist.id}
               >
 
                 <div className="card shadow-sm h-100">
 
                   <img
-                    src={`http://localhost:5000/${artist.img}`}
+                    src={`http://localhost:5000/images/${artist.profile_image}`}
                     className="card-img-top"
                     alt={artist.name}
                     style={{
