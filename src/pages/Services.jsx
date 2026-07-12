@@ -29,7 +29,7 @@ function Services() {
   useEffect(() => {
     fetchServices(category);
   }, [category]);
-console.log("Services State:", services);
+  console.log("Services State:", services);
   return (
 
     <div
@@ -40,7 +40,7 @@ console.log("Services State:", services);
     >
 
       <div className="container">
-<h4>Total Services: {services.length}</h4>
+        <h4>Total Services: {services.length}</h4>
         <h2 className="text-center fw-bold mb-4">
           Our Services
         </h2>
@@ -85,65 +85,65 @@ console.log("Services State:", services);
 
               <div className="card shadow-sm h-100">
                 {/* IMAGE */}
-      {service.image && (
-        <img
-          src={`http://localhost:5000/images/${service.image}`}
-          alt={service.name}
-          style={{
-            width: "100%",
-            height: "250px",
-            objectFit: "cover",
-            borderTopLeftRadius: "8px",
-            borderTopRightRadius: "8px",
-            display: "block"
-          }}
-          onError={() => console.log("Image not found:", service.image)}
-        />
-      )}
+                {service.image && (
+                  <img
+                    src={service.image}
+                    alt={service.name}
+                    style={{
+                      width: "100%",
+                      height: "250px",
+                      objectFit: "cover",
+                      borderTopLeftRadius: "8px",
+                      borderTopRightRadius: "8px",
+                      display: "block"
+                    }}
+                  />
+                )}
 
-                 
+
+
                 <div className="card-body text-center">
 
                   <h5 className="fw-bold">
                     {service.name}
                   </h5>
 
-    
+
 
                   <p className="small">
                     {service.description}
                   </p>
 
-                 <button
-  onClick={() =>
-    navigate("/artists", {
-      state: {
-        service: service.name
-      }
-    })
-  }
-  className="btn w-100"
-  style={{
-    background: "#f472b6",
-    color: "white",
-    borderRadius: "10px"
-  }}
->
-  View Artists
-</button>
-<button
-    className="view-category btn btn-outline-pink w-100"
-    onClick={() => navigate(`/subcategory/${service.id}`)}
-   className="btn w-100 mb-2 mt-2"
-  style={{
-    background: "#f472b6",
-    color: "#fff",
-    border: "none",
-    borderRadius: "10px",
-  }}
->
-    <i className="bi bi-grid-3x3-gap"></i> View Categories
-</button>
+                  <button
+                    onClick={() =>
+                      navigate("/artists", {
+                        state: {
+                          service: service.name
+                        }
+                      })
+                    }
+                    className="btn w-100"
+                    style={{
+                      background: "#f472b6",
+                      color: "white",
+                      borderRadius: "10px"
+                    }}
+                  >
+                    View Artists
+                  </button>
+                  <button
+                    className="view-category btn btn-outline-pink w-100"
+                    onClick={() => navigate(`/subcategory/${service.id}`)}
+                    className="btn w-100 mb-2 mt-2"
+                    style={{
+                      background: "#f472b6",
+                      color: "#fff",
+                      border: "none",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <i className="bi bi-grid-3x3-gap"></i> View Categories
+                  </button>
 
                 </div>
 

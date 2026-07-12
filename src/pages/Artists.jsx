@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from "react";
 import ArtistCard from "../component/ArtistCard";
+import { useParams } from "react-router-dom";
 import "./Artists.css";
 
 function Artists() {
 
   const [artists, setArtists] = useState([]);
   const [search, setSearch] = useState("");
+  const { subcategoryId } = useParams();
 
   // FETCH DATABASE DATA
   useEffect(() => {
 
-    fetch("http://localhost:5000/artists")
+    // fetch("http://localhost:5000/artists")
+    // fetch(`http://localhost:5000/artists/subcategory/${subcategoryId}`)
+    const url = subcategoryId
+      ? `http://localhost:5000/artists/subcategory/${subcategoryId}`
+      : "http://localhost:5000/artists";
+
+    fetch(url)
       .then((res) => res.json())
       .then((data) => setArtists(data))
       .catch((err) => console.log(err));
-
-  }, []);
+  }, [subcategoryId]);
 
   // SEARCH FILTER
 const filteredArtists = artists.filter((artist) => {

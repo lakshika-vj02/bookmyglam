@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./ServiceSubCategory.css";
 
 const ServiceSubCategory = () => {
   const { serviceId } = useParams();
   const [subcategories, setSubcategories] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`http://localhost:5000/subcategory/${serviceId}`)
@@ -23,7 +25,7 @@ const ServiceSubCategory = () => {
             <div className="card shadow-sm h-100">
               {item.image && (
                 <img
-                  src={`http://localhost:5000/images/${item.image}`}
+                  src={item.image}
                   className="card-img-top"
                   alt={item.subcategory_name}
                 />
@@ -38,7 +40,8 @@ const ServiceSubCategory = () => {
                   ₹{item.price}
                 </h6>
 
-                <button className="subcategory-btn btn w-100">
+                <button className="subcategory-btn btn w-100"
+                   onClick={() => navigate(`/artists/${item.id}`)}>
                   View Artists
                 </button>
               </div>

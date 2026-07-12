@@ -11,6 +11,7 @@ import Profile from "./pages/Profile";
 import AdminDashboard from "./pages/AdminDashboard";
 import Artists from "./pages/Artists";
 import ServiceSubCategory from "./pages/ServiceSubCategory";
+import ArtistServices from "./pages/ArtistServices";
 
 
 
@@ -52,6 +53,10 @@ function App() {
           </Layout>
         }
       />
+  <Route
+  path="/artist-services/:artistId"
+  element={<ArtistServices />}
+/>
 
     <Route
   path="/booking"

@@ -10,7 +10,7 @@ export default function ArtistCard({ artist }) {
 
       {/* IMAGE */}
       <img
-        src={`http://localhost:5000/images/${artist.profile_image}`}
+        src={artist.profile_image}
         alt={artist.profile_image}
         className="card-img-top"
         style={{
@@ -66,6 +66,17 @@ export default function ArtistCard({ artist }) {
         </p>
 
         {/* BUTTON */}
+        <div className="d-grid gap-2">
+        <button
+          onClick={() => navigate(`/artist-services/${artist.id}`)}
+            className="btn w-100 mb-2"
+  style={{
+    backgroundColor: "#f472b6",
+    border: "none",
+    color: "white"
+   }}>
+   View Services
+</button>
         <button
   onClick={() =>
     navigate("/booking", { state: artist })
@@ -79,7 +90,7 @@ export default function ArtistCard({ artist }) {
 >
   Book Now
 </button>
-
+</div>
       </div>
 
     </div>

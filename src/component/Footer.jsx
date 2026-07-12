@@ -46,7 +46,7 @@ export default function Footer() {
           {/* Column 4: Contact & Newsletter */}
           <div className="col-lg-4 col-md-6">
             <h3 className="footer-title">Contact Us</h3>
-            <p className="mb-1 text-gray-400">📍 Jaipur, India</p>
+            <p className="mb-1 text-gray-400">📍 Udaipur, India</p>
             <p className="mb-1 text-gray-400">📞 +91 9876543210</p>
             <p className="mb-4 text-gray-400">✉️ support@bookmyglam.com</p>
 

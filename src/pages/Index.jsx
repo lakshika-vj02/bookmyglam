@@ -90,7 +90,7 @@ function Index() {
                 <div className="card shadow-sm h-100">
 
                   <img
-                    src={`http://localhost:5000/images/${artist.profile_image}`}
+                    src={artist.profile_image}
                     className="card-img-top"
                     alt={artist.name}
                     style={{
