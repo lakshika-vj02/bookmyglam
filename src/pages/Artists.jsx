@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ArtistCard from "../component/ArtistCard";
 import { useParams } from "react-router-dom";
-import "./Artists.css";
 
 function Artists() {
 
