@@ -127,3 +127,11 @@ code {
   transform: translateY(-5px);
   box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
 }
+.form-check-input:checked {
+  background-color: #f472b6 !important;
+  border-color: #f472b6 !important;
+}
+
+.form-check-input:checked::before {
+  color: white;
+}

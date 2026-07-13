@@ -38,7 +38,7 @@ function ArtistServices() {
 
       <h2 className="mb-4">Artist Services</h2>
 
-      <div className="row">
+      {/* <div className="row">
 
         {services.map((service) => (
 
@@ -74,7 +74,63 @@ function ArtistServices() {
 
         ))}
 
+      </div> */}
+      <div>
+
+  {services.map((service) => (
+
+    <div className="card shadow-sm mb-3 p-3" key={service.id}>
+
+      <div className="row align-items-center">
+
+        {/* Image */}
+        <div className="col-md-2">
+          {service.image && (
+            <img
+              src={service.image}
+              alt={service.subcategory_name}
+              className="img-fluid rounded"
+              style={{
+                width: "120px",
+                height: "120px",
+                objectFit: "cover"
+              }}
+            />
+          )}
+        </div>
+
+        {/* Service Details */}
+        <div className="col-md-8">
+          <h5>{service.subcategory_name}</h5>
+
+          <p>{service.description}</p>
+
+          <h6>₹ {service.price}</h6>
+        </div>
+
+        {/* Checkbox */}
+        <div className="col-md-2 text-end">
+
+          <input
+            type="checkbox"
+            className="form-check-input"
+            style={{
+              accentColor: "#f472b6",
+              width: "22px",
+              height: "22px",
+              cursor: "pointer"
+            }}
+          />
+
+        </div>
+
       </div>
+
+    </div>
+
+  ))}
+
+</div>
 
     </div>
   );
