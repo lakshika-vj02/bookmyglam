@@ -20,6 +20,7 @@ function ArtistServices() {
 
   const { artistId } = useParams();
   const [services, setServices] = useState([]);
+  const [selectedServices, setSelectedServices] = useState([]);
 
   useEffect(() => {
 
@@ -37,6 +38,9 @@ function ArtistServices() {
     <div className="container py-5">
 
       <h2 className="mb-4">Artist Services</h2>
+      <p className="text-muted">
+  Select one or more services before booking.
+</p>
 
       {/* <div className="row">
 
@@ -81,8 +85,15 @@ function ArtistServices() {
 
     <div className="card shadow-sm mb-3 p-3" key={service.id}
 style={{
-    border: "2px solid #f472b6",
-    backgroundColor: "#fff5fa"
+    // border: "2px solid #f472b6",
+    // backgroundColor: "#fff5fa"
+    border: selectedServices.includes(service.id)
+      ? "2px solid #f472b6"
+      : "1px solid #dee2e6",
+
+    backgroundColor:selectedServices.includes(service.id)
+      ? "#fff5fa"
+      : "#fff"
   }}>
       <div className="row align-items-center">
 
@@ -109,6 +120,7 @@ style={{
           <p>{service.description}</p>
 
           <h6>₹ {service.price}</h6>
+           <style>color: "#f472b6",</style>
         </div>
 
         {/* Checkbox */}
@@ -117,6 +129,15 @@ style={{
           <input
             type="checkbox"
             className="form-check-input"
+            checked={selectedServices.includes(service.id)}
+  onChange={(e) => {
+    if (e.target.checked) {
+      setSelectedServices([...selectedServices, service.id]);
+    } else {
+      setSelectedServices(
+        selectedServices.filter((id) => id !== service.id)
+      );  }
+  }}
             style={{
               accentColor: "#f472b6",
               width: "22px",
