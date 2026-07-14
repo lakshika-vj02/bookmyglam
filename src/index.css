@@ -135,3 +135,8 @@ code {
 .form-check-input:checked::before {
   color: white;
 }
+.pink-btn{
+background-color:#f472b6;
+border-color:#f472b6
+
+}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Features from "../component/Features";
 
 function Index() {
 
@@ -139,7 +140,7 @@ function Index() {
         </div>
 
       </section>
-
+<Features />
       {/* CONTACT SECTION */}
       {/* CONTACT + CTA SECTION */}
 <section

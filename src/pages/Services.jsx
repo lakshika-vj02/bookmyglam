@@ -132,9 +132,9 @@ function Services() {
                     View Artists
                   </button>
                   <button
-                    className="view-category btn btn-outline-pink w-100"
+                    className="view-category btn btn-outline-pink w-100 pink-btn "
                     onClick={() => navigate(`/subcategory/${service.id}`)}
-                    className="btn w-100 mb-2 mt-2"
+                    className="btn w-100 mb-2 mt-2 pink-btn"
                     style={{
                       background: "#f472b6",
                       color: "#fff",

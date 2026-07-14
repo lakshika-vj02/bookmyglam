@@ -79,8 +79,11 @@ function ArtistServices() {
 
   {services.map((service) => (
 
-    <div className="card shadow-sm mb-3 p-3" key={service.id}>
-
+    <div className="card shadow-sm mb-3 p-3" key={service.id}
+style={{
+    border: "2px solid #f472b6",
+    backgroundColor: "#fff5fa"
+  }}>
       <div className="row align-items-center">
 
         {/* Image */}
@@ -91,8 +94,8 @@ function ArtistServices() {
               alt={service.subcategory_name}
               className="img-fluid rounded"
               style={{
-                width: "120px",
-                height: "120px",
+                width: "140px",
+                height: "140px",
                 objectFit: "cover"
               }}
             />

@@ -189,8 +189,12 @@ function Booking() {
 
         {/* BUTTON */}
         <button
-          className="btn btn-dark"
+          className="btn btn-dark "
           onClick={handleBooking}
+            style={{
+    backgroundColor: "#f472b6",
+    borderColor: "#f472b6",
+    color: "#ffffff"}}
         >
           Confirm Booking
         </button>

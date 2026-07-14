@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 export default function ArtistCard({ artist }) {
 
   const navigate = useNavigate();
-
+console.log(artist);
   return (
 
     <div className="card shadow-lg border-0 rounded-4 overflow-hidden h-100">
-
-      {/* IMAGE */}
+       {/* Image Container */}
+  <div style={{ position: "relative" }}>
+ {/* IMAGE */}
       <img
         src={artist.profile_image}
         alt={artist.profile_image}
@@ -18,6 +19,19 @@ export default function ArtistCard({ artist }) {
           objectFit: "cover"
         }}
       />
+
+    <div
+      style={{
+        position: "absolute",
+        bottom: "10px",
+        left: "10px",
+          backgroundColor: "rgba(255, 255, 255, 0.7)",
+      }}
+    >
+      ⭐ {artist.rating}
+    </div>
+
+  </div>
 
       <div className="card-body">
 
@@ -29,7 +43,7 @@ export default function ArtistCard({ artist }) {
 
         {/* SPECIALITY */}
         <p className="text-muted mb-2">
-          {artist.speciality}
+          {artist.specialty}
         </p>
         {artist.offer_price ? (
   <>
@@ -46,19 +60,19 @@ export default function ArtistCard({ artist }) {
 )}
 
 
-<p className="text-secondary">
+{/* <p className="text-secondary">
   Duration: {artist.duration}
-</p>
+</p> */}
 
         {/* EXPERIENCE */}
-        <p className="mb-2">
+        {/* <p className="mb-2">
           Experience: {artist.experience}
-        </p>
+        </p> */}
 
         {/* RATING */}
-        <p className="text-warning fw-semibold mb-2">
+        {/* <p className="text-warning fw-semibold mb-2">
           ⭐ {artist.rating}
-        </p>
+        </p> */}
 
         {/* CATEGORY */}
         <p className="text-danger mb-3">
@@ -66,14 +80,15 @@ export default function ArtistCard({ artist }) {
         </p>
 
         {/* BUTTON */}
-        <div className="d-grid gap-2">
+        <div className=" btn w-100 rounded-pill d-grid gap-2">
         <button
           onClick={() => navigate(`/artist-services/${artist.id}`)}
             className="btn w-100 mb-2"
   style={{
     backgroundColor: "#f472b6",
     border: "none",
-    color: "white"
+    color: "white",
+  
    }}>
    View Services
 </button>
