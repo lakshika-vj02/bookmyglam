@@ -15,12 +15,14 @@
 // export default ArtistServices;
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function ArtistServices() {
 
   const { artistId } = useParams();
   const [services, setServices] = useState([]);
   const [selectedServices, setSelectedServices] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
 
@@ -35,14 +37,30 @@ function ArtistServices() {
   }, [artistId]);
 
   return (
-    <div className="container py-5">
 
-      <h2 className="mb-4">Artist Services</h2>
-      <p className="text-muted">
+<div className="container py-5">
+
+<button
+  onClick={() => navigate(-1)}
+  className="btn btn-link ps-0 mb-2"
+  style={{
+    color: "#f472b6",
+    textDecoration: "none",
+    fontWeight: "600"
+  }}
+>
+  <i className="bi bi-arrow-left me-2"></i>
+  Back
+</button>
+
+<h2 className="fw-bold">Artist Services</h2>
+
+<p className="text-muted">
   Select one or more services before booking.
 </p>
 
-      {/* <div className="row">
+ 
+        {/* <div className="row">
 
         {services.map((service) => (
 
@@ -119,8 +137,17 @@ style={{
 
           <p>{service.description}</p>
 
-          <h6>₹ {service.price}</h6>
-           <style>color: "#f472b6",</style>
+          <h6
+           style={{
+            color: "#f472b6", 
+            fontWeight: "700"
+          }}>
+           ₹ {service.price}
+           </h6>
+           <p className="mb-0 text-muted">
+  <i className="bi bi-clock me-2"></i>
+  {service.duration}
+</p>
         </div>
 
         {/* Checkbox */}
