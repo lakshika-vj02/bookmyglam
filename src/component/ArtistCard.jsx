@@ -92,7 +92,7 @@ console.log(artist);
    }}>
    View Services
 </button>
-        <button
+        {/* <button
   onClick={() =>
     navigate("/booking", { state: artist })
   }
@@ -104,7 +104,7 @@ console.log(artist);
   }}
 >
   Book Now
-</button>
+</button> */}
 </div>
       </div>
 

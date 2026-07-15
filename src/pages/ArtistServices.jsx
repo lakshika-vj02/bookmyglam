@@ -187,28 +187,24 @@ style={{
   <div className="card-body d-flex justify-content-between align-items-center">
 
     <div>
-      <h6 className="text-center fw-bold">
+      <h6 className="text-center">
           <i className="bi bi-check2-circle me-2"></i>
         Selected Services
       </h6>
-      <h3>{selectedServices.length}</h3>
+      <h3 className=" text-center fw-bold">
+        {selectedServices.length}</h3>
     </div>
 
-    <div className="text-end">
-      <h6 className="text-center fw-bold">
-        Total Amount
+    <div className="text-center">
+      <h6 className="fw-bold">
+        Total Amount</h6>
         <h2
   style={{
     color:"#f472b6",
     fontWeight:"700"
   }}
-></h2>
-      </h6>
-
-      <h3 style={{ color: "#f472b6" }}>
-        ₹ {totalAmount}
-      </h3>
-    </div>
+>  ₹ {totalAmount}</h2>
+      </div>
  {/* Continue Booking Button */}
   <div className="d-flex justify-content-end mt-3">
 
@@ -220,8 +216,9 @@ style={{
         borderRadius: "10px"
       }}
       disabled={selectedServices.length === 0}
+       onClick={() => navigate("/booking")}
     >
-      Continue Booking
+      Book Now
     </button>
 
   </div>
