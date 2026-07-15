@@ -35,6 +35,9 @@ function ArtistServices() {
       .catch((err) => console.log(err));
 
   }, [artistId]);
+  const totalAmount = services
+  .filter((service) => selectedServices.includes(service.id))
+  .reduce((total, service) => total + Number(service.price), 0);
 
   return (
 
@@ -180,7 +183,50 @@ style={{
     </div>
 
   ))}
+<div className="card shadow-sm mt-4">
+  <div className="card-body d-flex justify-content-between align-items-center">
 
+    <div>
+      <h6 className="text-center fw-bold">
+          <i className="bi bi-check2-circle me-2"></i>
+        Selected Services
+      </h6>
+      <h3>{selectedServices.length}</h3>
+    </div>
+
+    <div className="text-end">
+      <h6 className="text-center fw-bold">
+        Total Amount
+        <h2
+  style={{
+    color:"#f472b6",
+    fontWeight:"700"
+  }}
+></h2>
+      </h6>
+
+      <h3 style={{ color: "#f472b6" }}>
+        ₹ {totalAmount}
+      </h3>
+    </div>
+ {/* Continue Booking Button */}
+  <div className="d-flex justify-content-end mt-3">
+
+    <button
+      className="btn px-4 py-2"
+      style={{
+        background: "#f472b6",
+        color: "#fff",
+        borderRadius: "10px"
+      }}
+      disabled={selectedServices.length === 0}
+    >
+      Continue Booking
+    </button>
+
+  </div>
+  </div>
+</div>
 </div>
 
     </div>
