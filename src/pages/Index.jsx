@@ -111,7 +111,7 @@ function Index() {
                     </p>
 
                     <Link
-                      to="/Artists"
+                      to={`/artist/${artist.id}/services`}
                       className="btn w-100"
                       style={{
                         backgroundColor: "#f472b6",
@@ -137,6 +137,22 @@ function Index() {
 
           )}
 
+        </div>
+
+        {/* View All Artists Button */}
+        <div className="text-center mt-3">
+          <Link
+            to="/artists"
+            className="btn btn-lg px-5 py-2"
+            style={{
+              backgroundColor: "#f472b6",
+              color: "white",
+              borderRadius: "12px",
+              fontWeight: "600"
+            }}
+          >
+            View All Artists
+          </Link>
         </div>
 
       </section>
@@ -254,7 +270,7 @@ function Index() {
             </h6>
 
             <p className="text-muted">
-              Jaipur, Rajasthan
+              Udaipur, Rajasthan
             </p>
 
           </div>

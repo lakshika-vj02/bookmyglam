@@ -15,6 +15,7 @@ import ArtistServices from "./pages/ArtistServices";
 
 
 
+
 function App() {
   return (
     <Routes>
@@ -65,6 +66,10 @@ function App() {
       <Booking />
     </Layout>
   }
+/>
+<Route
+  path="/artist/:artistId/services"
+  element={<ArtistServices />}
 />
 
       <Route
