@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 function Booking() {
 
@@ -9,9 +10,15 @@ function Booking() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [address, setAddress] = useState("");
+  
 
   const [services, setServices] = useState([]);
-
+  const location = useLocation();
+  const {
+  artistId,
+  services: selectedServices = [],
+  totalAmount = 0
+} = location.state || {};
   // CHECKBOX FUNCTION
   const handleServiceChange = (service) => {
 
@@ -32,29 +39,25 @@ function Booking() {
   const handleBooking = async () => {
 
     const bookingData = {
-
-      customer_name: name,
-
-      customer_phone: phone,
-
-      service_name: services.join(", "),
-
-      booking_date: date,
-
-      booking_time: time,
-
-      customer_location: address
+  user_id: 1,              // login ke baad dynamic hoga
+  artist_id: artistId,
+  booking_date: date,
+  time_slot: time,
+  address: address,
+  total_price: totalAmount,
+  customer_name: name,
+  customer_phone: phone,
+  services: selectedServices,
 
     };
-
     console.log(bookingData);
 
     try {
 
       const res = await axios.post(
-        "http://localhost:5000/bookings",
-        bookingData
-      );
+  "http://localhost:5000/bookings",
+  bookingData
+);
 
       console.log(res.data);
 
@@ -104,53 +107,43 @@ function Booking() {
         {/* SERVICES */}
         <div className="mb-3">
 
-          <h5>Select Services</h5>
+        <h5>Selected Services</h5>
 
-          <label className="me-3">
+  {selectedServices.map((service) => (
 
-            <input
-              type="checkbox"
-              checked={services.includes("Hair Styling")}
-              onChange={() =>
-                handleServiceChange("Hair Styling")
-              }
-            />
+    <div
+      key={service.id}
+      className="card mb-2 p-3"
+    >
+      <div className="d-flex justify-content-between">
 
-            {" "}Hair Styling
+        <div>
+          <h6>{service.subcategory_name}</h6>
+          <small className="text-muted">
+            {service.duration}
+          </small>
+        </div>
 
-          </label>
+        <div
+          style={{
+            color: "#f472b6",
+            fontWeight: "600"
+          }}
+        >
+          ₹ {service.price}
+        </div>
 
-          <br />
+      </div>
+    </div>
 
-          <label className="me-3">
+  ))}
 
-            <input
-              type="checkbox"
-              checked={services.includes("Nail Art")}
-              onChange={() =>
-                handleServiceChange("Nail Art")
-              }
-            />
-
-            {" "}Nail Art
-
-          </label>
-
-          <br />
-
-          <label className="me-3">
-
-            <input
-              type="checkbox"
-              checked={services.includes("Bridal Makeup")}
-              onChange={() =>
-                handleServiceChange("Bridal Makeup")
-              }
-            />
-
-            {" "}Bridal Makeup
-
-          </label>
+  <h4
+    className="text-end mt-3"
+    style={{ color: "#f472b6" }}
+  >
+    Total: ₹ {totalAmount}
+  </h4>
 
         </div>
 
