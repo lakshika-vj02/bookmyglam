@@ -45,7 +45,7 @@ console.log(artist);
         <p className="text-muted mb-2">
           {artist.specialty}
         </p>
-        {artist.offer_price ? (
+        {/* {artist.offer_price ? (
   <>
     <span className="text-decoration-line-through text-muted">
       ₹{artist.price}
@@ -57,7 +57,7 @@ console.log(artist);
   </>
 ) : (
   <p>₹{artist.price}</p>
-)}
+)} */}
 
 
 {/* <p className="text-secondary">
