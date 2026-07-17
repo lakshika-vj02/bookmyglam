@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,7 +26,19 @@ function Login() {
       const data = await res.json();
 
       if (data.success) {
-        localStorage.setItem("role", data.role);
+        // Save login session
+  localStorage.setItem("isLoggedIn", "true");
+  localStorage.setItem("role", data.role);
+
+  // Check whether the user came from Book Now
+  if (location.state) {
+
+    navigate("/booking", {
+      state: location.state
+    });
+
+    return;
+  }
 
         if (data.role === "admin") navigate("/admin");
         else if (data.role === "artist") navigate("/artist-dashboard");

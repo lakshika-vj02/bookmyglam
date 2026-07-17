@@ -1,18 +1,4 @@
-// import React from "react";
-// import { useParams } from "react-router-dom";
 
-// function ArtistServices() {
-//   const { artistId } = useParams();
-
-//   return (
-//     <div className="container">
-//       <h2>Artist Services</h2>
-//       <p>Artist ID: {artistId}</p>
-//     </div>
-//   );
-// }
-
-// export default ArtistServices;
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -38,7 +24,40 @@ function ArtistServices() {
   const totalAmount = services
   .filter((service) => selectedServices.includes(service.id))
   .reduce((total, service) => total + Number(service.price), 0);
+// Get complete details of the selected services
+const bookingServices = services.filter((service) =>
+  selectedServices.includes(service.id)
+);
+// Handle Book Now button click
+const handleBookNow = () => {
 
+  // Check whether the user is logged in
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+  // Redirect to login if the user is not authenticated
+  if (!isLoggedIn) {
+
+    navigate("/login", {
+      state: {
+        artistId,
+        services: bookingServices,
+        totalAmount
+      }
+    });
+
+    return;
+  }
+
+  // Navigate to booking page if the user is already logged in
+  navigate("/booking", {
+    state: {
+      artistId,
+      services: bookingServices,
+      totalAmount
+    }
+  });
+
+};
   return (
 
 <div className="container py-5">
@@ -63,51 +82,13 @@ function ArtistServices() {
 </p>
 
  
-        {/* <div className="row">
-
-        {services.map((service) => (
-
-          <div className="col-md-4 mb-4" key={service.id}>
-
-            <div className="card h-100 shadow">
-
-              {service.image && (
-                <img
-                  src={service.image}
-                  alt={service.subcategory_name}
-                  className="card-img-top"
-                  style={{
-                    height: "220px",
-                    objectFit: "cover"
-                  }}
-                />
-              )}
-
-              <div className="card-body">
-
-                <h5>{service.subcategory_name}</h5>
-
-                <p>{service.description}</p>
-
-                <h6>₹ {service.price}</h6>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        ))}
-
-      </div> */}
+        
       <div>
 
   {services.map((service) => (
 
     <div className="card shadow-sm mb-3 p-3" key={service.id}
 style={{
-    // border: "2px solid #f472b6",
-    // backgroundColor: "#fff5fa"
     border: selectedServices.includes(service.id)
       ? "2px solid #f472b6"
       : "1px solid #dee2e6",
@@ -216,7 +197,7 @@ style={{
         borderRadius: "10px"
       }}
       disabled={selectedServices.length === 0}
-       onClick={() => navigate("/booking")}
+       onClick={handleBookNow}
     >
       Book Now
     </button>
