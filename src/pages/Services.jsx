@@ -3,10 +3,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Services() {
-
+  const navigate = useNavigate();
   const [services, setServices] = useState([]);
   const [category, setCategory] = useState("");
-  const navigate = useNavigate();
+  const [selectedService, setSelectedService] = useState("");
 
   // FETCH SERVICES
   const fetchServices = async (cat = "") => {
@@ -44,6 +44,32 @@ function Services() {
         <h2 className="text-center fw-bold mb-4">
           Our Services
         </h2>
+        <div className="row justify-content-center mb-4">
+  <div className="col-md-4">
+
+    <select
+      className="form-select"
+      value={selectedService}
+      onChange={(e) => {
+        const id = e.target.value;
+        setSelectedService(id);
+
+        if (id) {
+          navigate(`/subcategory/${id}`);
+        }
+      }}
+    >
+      <option value="">Select Service</option>
+
+      {services.map((service) => (
+        <option key={service.id} value={service.id}>
+          {service.name}
+        </option>
+      ))}
+    </select>
+
+  </div>
+</div>
 
         {/* FILTER BUTTONS */}
         {/* <div className="text-center mb-5">

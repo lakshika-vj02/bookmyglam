@@ -34,9 +34,47 @@ function Navbar() {
               <Link className="nav-link fw-bold" to="/">Home</Link>
             </li>
             
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link className="nav-link fw-bold" to="/services">Service</Link>
-            </li>
+            </li> */}
+            <li className="nav-item dropdown">
+  <a
+    className="nav-link dropdown-toggle fw-bold"
+    href="#"
+    id="serviceDropdown"
+    role="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    Service
+  </a>
+
+  <ul className="dropdown-menu">
+    <li>
+      <Link className="dropdown-item" to="/services">
+        All Services
+      </Link>
+    </li>
+
+    <li>
+      <Link className="dropdown-item" to="/subcategory/1">
+        Bridal Makeup
+      </Link>
+    </li>
+
+    <li>
+      <Link className="dropdown-item" to="/subcategory/2">
+        Hair Styling
+      </Link>
+    </li>
+
+    <li>
+      <Link className="dropdown-item" to="/subcategory/3">
+        Nail Art
+      </Link>
+    </li>
+  </ul>
+</li>
 
             <li className="nav-item">
               <Link className="nav-link fw-bold" to="/artists">Artist</Link>
