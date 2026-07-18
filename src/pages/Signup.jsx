@@ -16,7 +16,30 @@ function Signup() {
       alert("All fields are required");
       return;
     }
+// Email Validation
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+if (!emailRegex.test(email)) {
+  alert("Please enter a valid email address");
+  return;
+}
+// Phone Validation
+const phoneRegex = /^[6-9]\d{9}$/;
+
+if (!phoneRegex.test(phone)) {
+  alert("Please enter a valid 10-digit phone number");
+  return;
+}
+// Password Validation
+const passwordRegex =
+  /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+
+if (!passwordRegex.test(password)) {
+  alert(
+    "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character."
+  );
+  return;
+}
     try {
       const res = await fetch("http://localhost:5000/api/signup", {
         method: "POST",
@@ -54,30 +77,35 @@ function Signup() {
         <h5 className="text-center mb-4">Signup</h5>
 
         <input
+        type="email"
           className="form-control mb-3"
           placeholder="Full Name"
+           value={name}
           onChange={(e) => setName(e.target.value)}
         />
 
         <input
           className="form-control mb-3"
+           type="email"
           placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
+         value={email}
+  onChange={(e) => setEmail(e.target.value)}
+/>
+<input
+  type="tel"
+  className="form-control mb-3"
+  placeholder="Phone Number"
+  value={phone}
+  onChange={(e) => setPhone(e.target.value)}
+/>
+    
         <input
           className="form-control mb-3"
           type="password"
           placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+  onChange={(e) => setPassword(e.target.value)}
         />
-
-        <input
-          className="form-control mb-3"
-          placeholder="Phone Number"
-          onChange={(e) => setPhone(e.target.value)}
-        />
-
         <select
           className="form-control mb-3"
           onChange={(e) => setGender(e.target.value)}

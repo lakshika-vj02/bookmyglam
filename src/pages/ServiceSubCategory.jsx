@@ -60,7 +60,7 @@ const ServiceSubCategory = () => {
               <div className="card-body">
                 <h5>{item.subcategory_name}</h5>
                 <p>{item.description}</p>
-                <h6 className="text-danger">₹{item.price}</h6>
+                {/* <h6 className="text-danger">₹{item.price}</h6> */}
 
                 <button
                   className="subcategory-btn btn w-100"

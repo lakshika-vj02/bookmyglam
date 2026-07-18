@@ -46,7 +46,7 @@ function Services() {
         </h2>
 
         {/* FILTER BUTTONS */}
-        <div className="text-center mb-5">
+        {/* <div className="text-center mb-5">
 
           <button
             className="btn btn-dark me-2"
@@ -76,7 +76,7 @@ function Services() {
             Nails
           </button>
 
-        </div>
+        </div> */}
 
         <div className="row">
 

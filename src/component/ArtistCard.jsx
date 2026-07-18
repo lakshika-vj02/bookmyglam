@@ -40,11 +40,23 @@ console.log(artist);
           {artist.name}
         </h4>
         
+{/* EXPERIENCE */}
+<p className="text-muted mb-2">
+  <i className="bi bi-briefcase-fill me-2"></i>
+  {artist.experience_years} Years Experience
+</p>
 
-        {/* SPECIALITY */}
-        <p className="text-muted mb-2">
-          {artist.specialty}
-        </p>
+{/* LOCATION */}
+<p className="text-muted mb-2">
+  <i className="bi bi-geo-alt-fill text-danger me-2"></i>
+  {artist.location}
+</p>
+
+{/* SPECIALITY */}
+<p className="text-muted mb-3">
+  <i className="bi bi-brush-fill me-2"></i>
+  {artist.specialty}
+</p>
         {/* {artist.offer_price ? (
   <>
     <span className="text-decoration-line-through text-muted">
@@ -64,10 +76,10 @@ console.log(artist);
   Duration: {artist.duration}
 </p> */}
 
-        {/* EXPERIENCE */}
-        {/* <p className="mb-2">
+         {/* EXPERIENCE  */}
+         <p className="text-muted mb-2">
           Experience: {artist.experience}
-        </p> */}
+        </p> 
 
         {/* RATING */}
         {/* <p className="text-warning fw-semibold mb-2">

@@ -75,8 +75,6 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        {/* ❌ ROLE FIELD HATA DIYA */}
-
         <button
   className="btn btn-primary w-100 mb-3"
   onClick={handleLogin}

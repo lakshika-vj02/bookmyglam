@@ -72,7 +72,7 @@ const handleBookNow = () => {
   }}
 >
   <i className="bi bi-arrow-left me-2"></i>
-  Back
+  Back to Artist Profile
 </button>
 
 <h2 className="fw-bold">Artist Services</h2>
