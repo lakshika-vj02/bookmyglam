@@ -58,19 +58,25 @@ function Navbar() {
 
     <li>
       <Link className="dropdown-item" to="/subcategory/1">
-        Bridal Makeup
+         Hair Styling
       </Link>
     </li>
 
     <li>
       <Link className="dropdown-item" to="/subcategory/2">
-        Hair Styling
+        Nail Art
       </Link>
     </li>
 
     <li>
       <Link className="dropdown-item" to="/subcategory/3">
-        Nail Art
+        Skin care
+      </Link>
+    </li>
+
+    <li>
+      <Link className="dropdown-item" to="/subcategory/4">
+        Makeup
       </Link>
     </li>
   </ul>

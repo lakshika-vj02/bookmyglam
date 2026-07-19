@@ -27,18 +27,19 @@ function Login() {
 
       if (data.success) {
         // Save login session
-  localStorage.setItem("isLoggedIn", "true");
-  localStorage.setItem("role", data.role);
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("role", data.role);
+        if (data.userId) {
+          localStorage.setItem("userId", data.userId);
+        }
 
-  // Check whether the user came from Book Now
-  if (location.state) {
-
-    navigate("/booking", {
-      state: location.state
-    });
-
-    return;
-  }
+        // Check whether the user came from Book Now
+        if (location.state) {
+          navigate("/booking", {
+            state: location.state
+          });
+          return;
+        }
 
         if (data.role === "admin") navigate("/admin");
         else if (data.role === "artist") navigate("/artist-dashboard");

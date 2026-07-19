@@ -117,6 +117,7 @@ if (!passwordRegex.test(password)) {
 
         <select
           className="form-control mb-3"
+          value={role}
           onChange={(e) => setRole(e.target.value)}
         >
           <option value="user">User</option>

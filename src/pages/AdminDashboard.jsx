@@ -11,27 +11,27 @@ function AdminDashboard() {
 
   // 🔥 API CALLS
   useEffect(() => {
-    fetch("http://localhost:5000/api/users/count")
+    fetch("http://localhost:5000/api/admin/users/count")
       .then(res => res.json())
       .then(data => setUsers(data.count))
       .catch(err => console.error("Error fetching users:", err));
 
-    fetch("http://localhost:5000/api/artists/count")
+    fetch("http://localhost:5000/api/admin/artists/count")
       .then(res => res.json())
       .then(data => setArtists(data.count))
       .catch(err => console.error("Error fetching artists:", err));
 
-    fetch("http://localhost:5000/api/services/count")
+    fetch("http://localhost:5000/api/admin/services/count")
       .then(res => res.json())
       .then(data => setServices(data.count))
       .catch(err => console.error("Error fetching services:", err));
 
-    fetch("http://localhost:5000/api/appointments/status")
+    fetch("http://localhost:5000/api/admin/appointments/status")
       .then(res => res.json())
       .then(data => setAppointments(data))
       .catch(err => console.error("Error fetching appointments:", err));
 
-    fetch("http://localhost:5000/api/payments/total")
+    fetch("http://localhost:5000/api/admin/payments/total")
       .then(res => res.json())
       .then(data => setRevenue(data.total))
       .catch(err => console.error("Error fetching revenue:", err));

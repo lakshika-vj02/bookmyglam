@@ -12,7 +12,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import Artists from "./pages/Artists";
 import ServiceSubCategory from "./pages/ServiceSubCategory";
 import ArtistServices from "./pages/ArtistServices";
-
+import ArtistDashboard from "./pages/ArtistDashboard";
 
 
 
@@ -77,6 +77,15 @@ function App() {
         element={
           <Layout>
             <Profile />
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/artist-dashboard"
+        element={
+          <Layout>
+            <ArtistDashboard />
           </Layout>
         }
       />
