@@ -1,7 +1,7 @@
 
-import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function ArtistServices() {
 
@@ -9,6 +9,9 @@ function ArtistServices() {
   const [services, setServices] = useState([]);
   const [selectedServices, setSelectedServices] = useState([]);
   const navigate = useNavigate();
+  const [artist, setArtist] = useState({});
+  const location = useLocation();
+  const artistName = location.state?.artistName || "";
 
   useEffect(() => {
 
@@ -52,6 +55,7 @@ const handleBookNow = () => {
   navigate("/booking", {
     state: {
       artistId,
+      artistName,
       services: bookingServices,
       totalAmount
     }

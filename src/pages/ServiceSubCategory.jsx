@@ -221,8 +221,9 @@ const ServiceSubCategory = () => {
                       )}
 
                       {/* Items list */}
+                      <div className="items-scroll">
                       {!isLoading && subItems.map((si) => (
-                        <div 
+                        <div
                           key={si.id}
                           className="d-flex justify-content-between align-items-center mb-3 p-3"
                           style={{
@@ -231,6 +232,8 @@ const ServiceSubCategory = () => {
                             boxShadow: "0 2px 8px rgba(244,114,182,0.1)"
                           }}
                 >
+                  
+              
 
                           <div style={{ flex: 1 }}>
                             <p className="fw-semibold mb-0" style={{ fontSize: "0.9rem" }}>
@@ -276,6 +279,7 @@ const ServiceSubCategory = () => {
                           </button>
                         </div>
                       ))}
+                    </div>
                     </div>
                   )}
 

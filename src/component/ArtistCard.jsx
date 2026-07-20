@@ -91,7 +91,12 @@ console.log(artist);
         {/* BUTTON */}
         <div className="w-100 ">
         <button
-          onClick={() => navigate(`/artist-services/${artist.id}`)}
+          onClick={() => navigate(`/artist-services/${artist.id}`, {
+      state: {
+        artistName: artist.name,
+      },
+    })
+  }
             className="btn w-100 rounded-pill mb-2"
   style={{
     backgroundColor: "#f472b6",
@@ -101,19 +106,6 @@ console.log(artist);
    }}>
    View Services
 </button>
-        {/* <button
-  onClick={() =>
-    navigate("/booking", { state: artist })
-  }
-  className="btn w-100 rounded-pill"
-  style={{
-    backgroundColor: "#f472b6",
-    border: "none",
-    color: "white"
-  }}
->
-  Book Now
-</button> */}
 </div>
       </div>
 

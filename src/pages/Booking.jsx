@@ -18,6 +18,7 @@ function Booking() {
   const location = useLocation();
   const {
   artistId,
+   artistName,
   services: selectedServices = [],
   totalAmount = 0
 } = location.state || {};
@@ -43,6 +44,8 @@ function Booking() {
     const bookingData = {
   user_id: 1,              // login ke baad dynamic hoga
   artist_id: artistId,
+  artist_name: artistName,              
+  service_id: selectedServices[0]?.id,  
   booking_date: date,
   time_slot: time,
   address: address,
