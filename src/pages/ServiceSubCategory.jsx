@@ -106,6 +106,7 @@ const ServiceSubCategory = () => {
         )}
 
         {/* ── LEVEL 2 SUBCATEGORY CARDS ── */}
+        <div className="subcategory-scroll">
         <div className="row">
           {subcategories.map((item) => {
             const isExpanded = expandedId === item.id;
@@ -152,6 +153,7 @@ const ServiceSubCategory = () => {
                       >
                         {serviceEmojis[serviceId] || "✨"}
                       </div>
+                      
                     )}
 
                     <div className="card-body p-4">
@@ -220,7 +222,7 @@ const ServiceSubCategory = () => {
 
                       {/* Items list */}
                       {!isLoading && subItems.map((si) => (
-                        <div
+                        <div 
                           key={si.id}
                           className="d-flex justify-content-between align-items-center mb-3 p-3"
                           style={{
@@ -228,7 +230,8 @@ const ServiceSubCategory = () => {
                             borderRadius: "12px",
                             boxShadow: "0 2px 8px rgba(244,114,182,0.1)"
                           }}
-                        >
+                >
+
                           <div style={{ flex: 1 }}>
                             <p className="fw-semibold mb-0" style={{ fontSize: "0.9rem" }}>
                               {si.item_name}
@@ -281,11 +284,11 @@ const ServiceSubCategory = () => {
             );
           })}
         </div>
-
+</div>
       </div>
     </div>
   );
 };
 
 export default ServiceSubCategory;
-
+

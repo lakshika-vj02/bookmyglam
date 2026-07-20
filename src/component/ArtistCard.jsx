@@ -76,10 +76,7 @@ console.log(artist);
   Duration: {artist.duration}
 </p> */}
 
-         {/* EXPERIENCE  */}
-         <p className="text-muted mb-2">
-          Experience: {artist.experience}
-        </p> 
+
 
         {/* RATING */}
         {/* <p className="text-warning fw-semibold mb-2">
@@ -92,10 +89,10 @@ console.log(artist);
         </p>
 
         {/* BUTTON */}
-        <div className=" btn w-100 rounded-pill d-grid gap-2">
+        <div className="w-100 ">
         <button
           onClick={() => navigate(`/artist-services/${artist.id}`)}
-            className="btn w-100 mb-2"
+            className="btn w-100 rounded-pill mb-2"
   style={{
     backgroundColor: "#f472b6",
     border: "none",
