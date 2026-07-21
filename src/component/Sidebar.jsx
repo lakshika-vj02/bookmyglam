@@ -1,143 +1,76 @@
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { 
+  FaTachometerAlt, 
+  FaUsers, 
+  FaPalette, 
+  FaClipboardList, 
+  FaCalendarCheck, 
+  FaSignOutAlt 
+} from 'react-icons/fa';
 
-import React, { useEffect, useState } from "react";
-import Sidebar from "../component/Sidebar";
+function Sidebar() {
+  const navigate = useNavigate();
 
-function AdminDashboard() {
-
-  // 🔥 States
-  const [users, setUsers] = useState(0);
-  const [artists, setArtists] = useState(0);
-  const [appointments, setAppointments] = useState({});
-  const [revenue, setRevenue] = useState(0);
-  const [services, setServices] = useState(0);
-
-  // 🔥 API CALLS
-  useEffect(() => {
-
-    fetch("http://localhost:5000/api/users/count")
-      .then(res => res.json())
-      .then(data => setUsers(data.count));
-
-    fetch("http://localhost:5000/api/artists/count")
-      .then(res => res.json())
-      .then(data => setArtists(data.count));
-
-    fetch("http://localhost:5000/api/services/count")
-      .then(res => res.json())
-      .then(data => setServices(data.count));
-
-    fetch("http://localhost:5000/api/appointments/status")
-      .then(res => res.json())
-      .then(data => setAppointments(data));
-
-    fetch("http://localhost:5000/api/payments/total")
-      .then(res => res.json())
-      .then(data => setRevenue(data.total));
-
-  }, []);
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("role");
+    localStorage.removeItem("userId");
+    navigate("/login");
+  };
 
   return (
-    <div className="container-fluid">
-      <div className="row">
+    <div className="bg-dark text-white vh-100 p-3 shadow d-flex flex-column" style={{ position: 'fixed', top: 0, left: 0, width: 'inherit', height: '100vh', overflowY: 'auto' }}>
+      <h3 className="text-center mb-4 mt-3" style={{ color: '#f472b6', fontWeight: 'bold' }}>
+        <span className="me-2">💄</span> 
+        Admin
+      </h3>
+      <hr className="bg-secondary mb-4" />
 
-     
-<div className="col-md-2 p-0">
-  <Sidebar />
-</div>
+      <ul className="nav nav-pills flex-column mb-auto mt-2 gap-2">
+        <li className="nav-item">
+          <Link to="/admin" className="nav-link text-white d-flex align-items-center" style={{ background: '#f472b6' }}>
+            <FaTachometerAlt className="me-3" size={20} />
+            <span className="fs-5">Dashboard</span>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/admin/users" className="nav-link text-white d-flex align-items-center hover-overlay">
+            <FaUsers className="me-3" size={20} />
+            <span className="fs-5">Users</span>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/admin/artists" className="nav-link text-white d-flex align-items-center hover-overlay">
+            <FaPalette className="me-3" size={20} />
+            <span className="fs-5">Artists</span>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/admin/services" className="nav-link text-white d-flex align-items-center hover-overlay">
+            <FaClipboardList className="me-3" size={20} />
+            <span className="fs-5">Services</span>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/admin/appointments" className="nav-link text-white d-flex align-items-center hover-overlay">
+            <FaCalendarCheck className="me-3" size={20} />
+            <span className="fs-5">Appointments</span>
+          </Link>
+        </li>
+      </ul>
 
-        {/* Main Content */}
-        <div className="col-md-10 p-4">
-
-          <h2 className="mb-4">Admin Dashboard</h2>
-
-          {/* 🔥 TOP CARDS */}
-          <div className="row">
-
-            <div className="col-lg-3 col-md-6 mb-4">
-              <div className="card text-center shadow">
-                <div className="card-body">
-                  <h6>Total Users</h6>
-                  <h3>{users}</h3>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-3 col-md-6 mb-4">
-              <div className="card text-center shadow">
-                <div className="card-body">
-                  <h6>Total Artists</h6>
-                  <h3>{artists}</h3>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-3 col-md-6 mb-4">
-              <div className="card text-center shadow">
-                <div className="card-body">
-                  <h6>Total Services</h6>
-                  <h3>{services}</h3>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-3 col-md-6 mb-4">
-              <div className="card text-center shadow">
-                <div className="card-body">
-                  <h6>Total Revenue</h6>
-                  <h3>₹{revenue}</h3>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          {/* 🔥 APPOINTMENT STATUS */}
-          <h4 className="mt-4">Appointments Status</h4>
-
-          <div className="row mt-3">
-
-            <div className="col-md-3">
-              <div className="card text-center bg-warning text-white">
-                <div className="card-body">
-                  <h6>Pending</h6>
-                  <h3>{appointments.pending || 0}</h3>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-3">
-              <div className="card text-center bg-success text-white">
-                <div className="card-body">
-                  <h6>Accepted</h6>
-                  <h3>{appointments.accepted || 0}</h3>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-3">
-              <div className="card text-center bg-danger text-white">
-                <div className="card-body">
-                  <h6>Rejected</h6>
-                  <h3>{appointments.rejected || 0}</h3>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-3">
-              <div className="card text-center bg-primary text-white">
-                <div className="card-body">
-                  <h6>Completed</h6>
-                  <h3>{appointments.completed || 0}</h3>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
+      <hr className="bg-secondary mt-4 mb-4" />
+      <div>
+        <button 
+          className="btn btn-outline-light w-100 d-flex align-items-center justify-content-center py-2" 
+          onClick={handleLogout}
+        >
+          <FaSignOutAlt className="me-2" /> Logout
+        </button>
       </div>
     </div>
   );
 }
 
-export default AdminDashboard;
+export default Sidebar;

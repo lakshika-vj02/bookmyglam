@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../component/Sidebar";
+import { useNavigate } from "react-router-dom";
 
 function AdminDashboard() {
   // 🔥 States
@@ -8,6 +9,7 @@ function AdminDashboard() {
   const [appointments, setAppointments] = useState({});
   const [revenue, setRevenue] = useState(0);
   const [services, setServices] = useState(0);
+  const navigate = useNavigate();
 
   // 🔥 API CALLS
   useEffect(() => {
@@ -42,8 +44,8 @@ function AdminDashboard() {
       <div className="row">
 
         {/* Sidebar */}
-        <div className="col-md-2 p-0">
-          {/* <Sidebar /> */}
+        <div className="col-md-2 p-0" style={{ position: 'relative' }}>
+          <Sidebar />
         </div>
 
         {/* Main Content */}
@@ -55,16 +57,21 @@ function AdminDashboard() {
           <div className="row">
 
             <div className="col-lg-3 col-md-6 mb-4">
-              <div className="card text-center shadow">
+              <div className="card text-center shadow"
+                style={{ cursor: "pointer" }}
+  onClick={() => navigate("/admin/users")}
+>
                 <div className="card-body">
                   <h6>Total Users</h6>
-                  <h3>{users}</h3>
+                 <h3>{users}</h3>
                 </div>
               </div>
             </div>
 
             <div className="col-lg-3 col-md-6 mb-4">
-              <div className="card text-center shadow">
+              <div className="card text-center shadow"
+                onClick={() => navigate("/admin/artists")}
+>
                 <div className="card-body">
                   <h6>Total Artists</h6>
                   <h3>{artists}</h3>
@@ -74,7 +81,9 @@ function AdminDashboard() {
 
             <div className="col-lg-3 col-md-6 mb-4">
               <div className="card text-center shadow">
-                <div className="card-body">
+                <div className="card-body"
+                  onClick={() => navigate("/admin/total-services")}
+>
                   <h6>Total Services</h6>
                   <h3>{services}</h3>
                 </div>

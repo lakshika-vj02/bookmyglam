@@ -92,15 +92,25 @@ const handleBookNow = () => {
   {services.map((service) => (
 
     <div className="card shadow-sm mb-3 p-3" key={service.id}
-style={{
-    border: selectedServices.includes(service.id)
-      ? "2px solid #f472b6"
-      : "1px solid #dee2e6",
-
-    backgroundColor:selectedServices.includes(service.id)
-      ? "#fff5fa"
-      : "#fff"
-  }}>
+     onClick={() => {
+       if (selectedServices.includes(service.id)) {
+          setSelectedServices(
+            selectedServices.filter((id) => id !== service.id)
+          );
+ } else {
+          setSelectedServices([...selectedServices, service.id]);
+        }
+      }}
+      style={{
+        cursor: "pointer",
+        border: selectedServices.includes(service.id)
+          ? "2px solid #f472b6"
+          : "1px solid #dee2e6",
+        backgroundColor: selectedServices.includes(service.id)
+          ? "#fff5fa"
+          : "#fff"
+      }}
+    >
       <div className="row align-items-center">
 
         {/* Image */}

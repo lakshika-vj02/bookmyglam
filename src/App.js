@@ -9,6 +9,7 @@ import Services from "./pages/Services";
 import Booking from "./pages/Booking";
 import Profile from "./pages/Profile";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminArtists from "./pages/AdminArtists";
 import Artists from "./pages/Artists";
 import ServiceSubCategory from "./pages/ServiceSubCategory";
 import ArtistServices from "./pages/ArtistServices";
@@ -59,6 +60,7 @@ function App() {
   element={<ArtistServices />}
 />
 
+
     <Route
   path="/booking"
   element={
@@ -93,9 +95,14 @@ function App() {
       <Route
         path="/admin"
         element={
-        
             <AdminDashboard />
-      
+        }
+      />
+
+      <Route
+        path="/admin/artists"
+        element={
+            <AdminArtists />
         }
       />
 

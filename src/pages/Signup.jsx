@@ -59,8 +59,8 @@ if (!passwordRegex.test(password)) {
       const data = await res.json();
 
       if (data.success) {
-        alert("Signup Successful");
-        navigate("/");
+        alert("Signup Successful. Please login to continue.");
+        navigate("/login");
       } else {
         alert(data.message);
       }
@@ -136,7 +136,7 @@ if (!passwordRegex.test(password)) {
           Already have an account?
           <span
             style={{ color: "blue", cursor: "pointer" }}
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/login")}
           >
             {" "}Login
           </span>

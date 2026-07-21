@@ -54,8 +54,9 @@ function Booking() {
   customer_phone: phone,
   services: selectedServices,
   payment_method: paymentMethod,
-payment_status: "pending",
-
+ notes: "Please arrive 15 minutes early.",
+  payment_status: "pending"
+,
     };
     console.log(bookingData);
 
@@ -67,6 +68,8 @@ payment_status: "pending",
 );
 
       console.log(res.data);
+      console.log("Location State:", location.state);
+      console.log("Artist Name:", artistName);
 
       alert("Booking Saved Successfully");
 
@@ -268,7 +271,7 @@ payment_status: "pending",
       Pay at Salon
     </label>
   </div>
-
+{/* 
   <div className="form-check">
     <input
       className="form-check-input"
@@ -281,7 +284,7 @@ payment_status: "pending",
     <label className="form-check-label">
       UPI
     </label>
-  </div>
+  </div> */}
 </div>
 
         {/* BUTTON */}
