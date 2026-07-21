@@ -88,10 +88,13 @@ function Navbar() {
 
         
 
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link className="nav-link fw-bold" to="/booking">My Booking</Link>
+            </li> */}
+<li className="nav-item">
+              <Link className="nav-link fw-bold" to="/My-booking">My-booking</Link>
             </li>
-
+           
           </ul>
 
           {/* LOGIN BUTTON */}

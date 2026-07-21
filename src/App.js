@@ -14,6 +14,8 @@ import Artists from "./pages/Artists";
 import ServiceSubCategory from "./pages/ServiceSubCategory";
 import ArtistServices from "./pages/ArtistServices";
 import ArtistDashboard from "./pages/ArtistDashboard";
+import MyBooking from "./pages/mybooking";
+
 
 
 
@@ -69,6 +71,12 @@ function App() {
     </Layout>
   }
 />
+<Route 
+path="/my-booking" 
+element={
+<Layout>
+  <MyBooking />
+</Layout>} />
 <Route
   path="/artist/:artistId/services"
   element={<ArtistServices />}

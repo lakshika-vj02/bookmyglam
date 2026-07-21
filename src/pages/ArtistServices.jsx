@@ -37,19 +37,19 @@ const handleBookNow = () => {
   // Check whether the user is logged in
   const isLoggedIn = localStorage.getItem("isLoggedIn");
 
-  // Redirect to login if the user is not authenticated
-  if (!isLoggedIn) {
+  // // Redirect to login if the user is not authenticated
+  // if (!isLoggedIn) {
 
-    navigate("/login", {
-      state: {
-        artistId,
-        services: bookingServices,
-        totalAmount
-      }
-    });
+  //   navigate("/login", {
+  //     state: {
+  //       artistId,
+  //       services: bookingServices,
+  //       totalAmount
+  //     }
+  //   });
 
-    return;
-  }
+  //   return;
+  // }
 
   // Navigate to booking page if the user is already logged in
   navigate("/booking", {
