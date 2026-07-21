@@ -15,6 +15,12 @@ function Booking() {
   const [address, setAddress] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("Pay at Salon");
   const [services, setServices] = useState([]);
+  const [nameError, setNameError] = useState("");
+const [phoneError, setPhoneError] = useState("");
+const [email, setEmail] = useState("");
+const [emailError, setEmailError] = useState("");
+const [dateError, setDateError] = useState("");
+const [timeError, setTimeError] = useState("");
 
   // UI STATES (For Tick mark / Loading / Error)
   const [bookingStatus, setBookingStatus] = useState("idle"); // 'idle' | 'loading' | 'success' | 'error'
@@ -30,17 +36,66 @@ function Booking() {
   // SAVE BOOKING
   const handleBooking = async () => {
     // Basic validation
-    if (!name || !phone || !date || !time) {
-      setBookingStatus("error");
-      setErrorMessage("Please fill all required fields (Name, Phone, Date, Time).");
-      return;
-    }
+    // if (!name || !phone || !date || !time) {
+    //   setBookingStatus("error");
+    //   setErrorMessage("Please fill all required fields (Name, Phone, Date, Time).");
+    //   return;
+    // }
+// Name Validation
+if (name.trim() === "") {
+  setNameError("Name is required");
+  return
+} 
+setNameError("");
+
+//email validation
+if (email.trim() === "") {
+  setEmailError("Email is required");
+  return;
+}
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!emailRegex.test(email)) {
+  setEmailError("Enter valid email");
+  return;
+}
+setEmailError("");
+// Phone Validation
+if (phone.trim() === "") {
+  setPhoneError("Phone number is required");
+  return;
+}
+
+if (!/^[0-9]{10}$/.test(phone)) {
+  setPhoneError("Phone number must be 10 digits");
+  return;
+}
+setPhoneError("");
+
+//date validation
+if(date===""){
+  setDateError("please select date");
+  return
+}
+setDateError("")
+
+//time validation
+if (time === "") {
+  setTimeError("Please select time");
+  return;
+}
+setTimeError("");
+setNameError("");
+setEmailError("");
+setPhoneError("");
+setDateError("");
 
     setBookingStatus("loading"); // Start loading
     setErrorMessage("");
 
     const bookingData = {
-      user_id: 1, // login ke baad dynamic hoga
+      user_id: 1, 
       artist_id: artistId,
       artist_name: artistName,
       service_id: selectedServices[0]?.id,
@@ -54,12 +109,13 @@ function Booking() {
       payment_method: paymentMethod,
       notes: "Please arrive 15 minutes early.",
       payment_status: "pending",
+       customer_email: email,
     };
 
     try {
       const res = await axios.post("http://localhost:5000/bookings", bookingData);
       
-      // Update state to success to show the tick mark UI
+    
       setBookingStatus("success");
 
       // CLEAR FORM
@@ -115,7 +171,7 @@ function Booking() {
             {/* Error Alert Box */}
             {bookingStatus === "error" && (
               <div className="alert alert-danger text-center shadow-sm">
-                ❌ {errorMessage}
+                 {errorMessage}
               </div>
             )}
 
@@ -126,44 +182,95 @@ function Booking() {
                 <input
                   type="text"
                   placeholder="Enter Name"
-                  className="form-control mb-3"
+                  className={`form-control ${nameError ? "is-invalid" : ""}`}
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                   setName(e.target.value);
+                    setNameError("");
+    }}
                 />
-              </div>
+                {nameError && (
+    <div className="invalid-feedback">
+      {nameError}
+    </div>
+  )}
+   </div>
+{/* EMAIL */}
+<div className="col-md-6">
+  <label className="form-label fw-bold">Email</label>
+  <input
+    type="email"
+    placeholder="Enter Email"
+    className={`form-control ${emailError ? "is-invalid" : ""}`}
+    value={email}
+    onChange={(e) => {
+      setEmail(e.target.value);
+      setEmailError("");
+    }}
+  />
 
+  {emailError && (
+    <div className="invalid-feedback">
+      {emailError}
+    </div>
+  )}
+</div>
               {/* PHONE */}
-              <div className="col-md-6">
+              <div className="col-md-4">
                 <label className="form-label fw-bold">Phone Number</label>
                 <input
                   type="text"
                   placeholder="Phone Number"
-                  className="form-control mb-3"
+                  className={`form-control ${phoneError ? "is-invalid" : ""}`}
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  onChange={(e) => 
+                    {setPhone(e.target.value);
+                      setPhoneError("");
+                    }}
                 />
+                {phoneError && (
+  <div className="invalid-feedback">
+    {phoneError}
+  </div>
+)}
               </div>
 
               {/* DATE */}
-              <div className="col-md-6 mb-3">
+              <div className="col-md-4 mb-3">
                 <label className="form-label fw-bold">Select Date</label>
                 <input
                   type="date"
-                  className="form-control"
+                 className={`form-control ${dateError ? "is-invalid" : ""}`}
                   value={date}
-                  onChange={(e) => setDate(e.target.value)}
+                  onChange={(e) => {
+                    setDate(e.target.value);
+                    setDateError("");
+                  }}
                 />
+                {dateError && (
+  <div className="invalid-feedback">
+    {dateError}
+  </div>
+)}
               </div>
 
               {/* TIME */}
-              <div className="col-md-6 mb-3">
+              <div className="col-md-4 mb-3">
                 <label className="form-label fw-bold">Select Time</label>
                 <input
                   type="time"
-                  className="form-control"
+                 className={`form-control ${timeError ? "is-invalid" : ""}`}
                   value={time}
-                  onChange={(e) => setTime(e.target.value)}
+                  onChange={(e) => {
+                    setTime(e.target.value);
+                    setTimeError("");
+                  }}
                 />
+                 {timeError && (
+  <div className="invalid-feedback">
+    {timeError}
+  </div>
+)}
               </div>
             </div>
 
