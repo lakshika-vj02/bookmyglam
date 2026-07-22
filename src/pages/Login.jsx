@@ -43,7 +43,7 @@ function Login() {
 
         if (data.role === "admin") navigate("/admin");
         else if (data.role === "artist") navigate("/artist-dashboard");
-        else navigate("/home");
+        else navigate("/");
       } else {
         alert(data.message);
       }
