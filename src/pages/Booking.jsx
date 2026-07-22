@@ -41,6 +41,7 @@ const [timeError, setTimeError] = useState("");
     //   setErrorMessage("Please fill all required fields (Name, Phone, Date, Time).");
     //   return;
     // }
+    
 // Name Validation
 if (name.trim() === "") {
   setNameError("Name is required");
@@ -85,6 +86,45 @@ if (time === "") {
   setTimeError("Please select time");
   return;
 }
+// Check if the user is logged in
+const isLoggedIn = localStorage.getItem("isLoggedIn");
+if (!isLoggedIn) {
+  alert("Please login first");
+
+ 
+console.log("Going to Login with state:", {
+    artistId,
+    artistName,
+    services: selectedServices,
+    totalAmount,
+    name,
+    email,
+    phone,
+    date,
+    time,
+    address,
+    paymentMethod,
+  });
+  navigate("/login", {
+    state: {
+      artistId,
+      artistName,
+      services: selectedServices,
+      totalAmount,
+      name,
+      email,
+      phone,
+      date,
+      time,
+      address,
+      paymentMethod,
+    },
+  });
+
+  return;
+}
+
+// Save booking to the database
 setTimeError("");
 setNameError("");
 setEmailError("");

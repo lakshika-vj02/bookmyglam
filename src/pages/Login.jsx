@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 function Login() {
   const navigate = useNavigate();
   const location = useLocation();
+  console.log("Location State:", location.state);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,14 +33,19 @@ function Login() {
         if (data.userId) {
           localStorage.setItem("userId", data.userId);
         }
+         console.log("Login Success");
+  console.log("Full Location:", location);
+  console.log("Location State:", location.state);
 
         // Check whether the user came from Book Now
         if (location.state) {
+          console.log("Going back to Booking");
           navigate("/booking", {
             state: location.state
           });
           return;
         }
+ console.log("No location.state found");
 
         if (data.role === "admin") navigate("/admin");
         else if (data.role === "artist") navigate("/artist-dashboard");
