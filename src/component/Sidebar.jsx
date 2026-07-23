@@ -30,15 +30,10 @@ function Sidebar() {
 
       <ul className="nav nav-pills flex-column mb-auto mt-2 gap-2">
         <li className="nav-item">
-          <NavLink
-  to="/admin"
-  end
-  className={({ isActive }) =>
-    `nav-link text-white d-flex align-items-center ${
-      isActive ? "active-menu" : "hover-overlay"
-    }`
-  }
-></NavLink>
+          <NavLink to="/admin" className="nav-link text-white d-flex align-items-center" style={{ background: '#f472b6' }}>
+            <FaTachometerAlt className="me-3" size={20} />
+            <span className="fs-5">Dashboard</span>
+          </NavLink>
         </li>
         <li className="nav-item">
           <NavLink to="/admin/users" className="nav-link text-white d-flex align-items-center hover-overlay">
