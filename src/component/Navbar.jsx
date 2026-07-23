@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
    <nav className="navbar navbar-expand-lg navbar-light bg-light py-2 shadow-sm fixed-top">
-      <div className="container-fluid d-flex align-items-center">
+      <div className="container d-flex align-items-center">
 
         {/* LOGO LEFT */}
         <Link className="navbar-brand" to="/">
@@ -28,16 +28,16 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
           {/* CENTER MENU */}
-          <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav ms-auto me-4 mb-2 mb-lg-0">
 
-            <li className="nav-item">
+            <li className="nav-item mx-3">
               <Link className="nav-link fw-bold" to="/">Home</Link>
             </li>
             
             {/* <li className="nav-item">
               <Link className="nav-link fw-bold" to="/services">Service</Link>
             </li> */}
-            <li className="nav-item dropdown">
+            <li className="nav-item dropdown mx-3">
   <a
     className="nav-link dropdown-toggle fw-bold"
     href="#"
@@ -82,7 +82,7 @@ function Navbar() {
   </ul>
 </li>
 
-            <li className="nav-item">
+            <li className="nav-item mx-3">
               <Link className="nav-link fw-bold" to="/artists">Artist</Link>
             </li>
 
@@ -91,7 +91,7 @@ function Navbar() {
             {/* <li className="nav-item">
               <Link className="nav-link fw-bold" to="/booking">My Booking</Link>
             </li> */}
-<li className="nav-item">
+<li className="nav-item  mx-3">
               <Link className="nav-link fw-bold" to="/My-booking">My-booking</Link>
             </li>
            
@@ -99,7 +99,7 @@ function Navbar() {
 
           {/* LOGIN BUTTON */}
           <Link
-         className="btn btn-primary"
+         className="btn ms-3"
           to="/login"
           style={{
           backgroundColor: "#f472b6",

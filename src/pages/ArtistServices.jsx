@@ -43,6 +43,7 @@ const handleBookNow = () => {
   //   navigate("/login", {
   //     state: {
   //       artistId,
+  //       artistName,
   //       services: bookingServices,
   //       totalAmount
   //     }

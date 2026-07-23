@@ -15,6 +15,7 @@ import ServiceSubCategory from "./pages/ServiceSubCategory";
 import ArtistServices from "./pages/ArtistServices";
 import ArtistDashboard from "./pages/ArtistDashboard";
 import MyBooking from "./pages/mybooking";
+import AdminUsers from "./pages/AdminUsers";
 
 
 
@@ -113,7 +114,10 @@ element={
             <AdminArtists />
         }
       />
-
+<Route
+  path="/admin/users"
+  element={<AdminUsers />}
+/>
     </Routes>
   );
 }

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Signup() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -60,7 +61,7 @@ if (!passwordRegex.test(password)) {
 
       if (data.success) {
         alert("Signup Successful. Please login to continue.");
-        navigate("/login");
+        navigate("/login", { state: location.state });
       } else {
         alert(data.message);
       }
@@ -121,8 +122,8 @@ if (!passwordRegex.test(password)) {
           onChange={(e) => setRole(e.target.value)}
         >
           <option value="user">User</option>
-          <option value="artist">Artist</option>
-          <option value="admin">Admin</option>
+          {/* <option value="artist">Artist</option>
+          <option value="admin">Admin</option> */}
         </select>
 
         <button
@@ -136,7 +137,7 @@ if (!passwordRegex.test(password)) {
           Already have an account?
           <span
             style={{ color: "blue", cursor: "pointer" }}
-            onClick={() => navigate("/login")}
+            onClick={() => navigate("/login", { state: location.state })}
           >
             {" "}Login
           </span>

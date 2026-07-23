@@ -7,17 +7,31 @@ function Booking() {
   const location = useLocation();
   const navigate = useNavigate(); // For redirecting after success
 
+  const {
+    artistId,
+    artistName,
+    services: selectedServices = [],
+    totalAmount = 0,
+    name: stateName = "",
+    phone: statePhone = "",
+    email: stateEmail = "",
+    date: stateDate = "",
+    time: stateTime = "",
+    address: stateAddress = "",
+    paymentMethod: statePaymentMethod = "Pay at Salon",
+  } = location.state || {};
+
   // FORM STATES
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-  const [address, setAddress] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("Pay at Salon");
+  const [name, setName] = useState(stateName);
+  const [phone, setPhone] = useState(statePhone);
+  const [date, setDate] = useState(stateDate);
+  const [time, setTime] = useState(stateTime);
+  const [address, setAddress] = useState(stateAddress);
+  const [paymentMethod, setPaymentMethod] = useState(statePaymentMethod);
   const [services, setServices] = useState([]);
   const [nameError, setNameError] = useState("");
 const [phoneError, setPhoneError] = useState("");
-const [email, setEmail] = useState("");
+const [email, setEmail] = useState(stateEmail);
 const [emailError, setEmailError] = useState("");
 const [dateError, setDateError] = useState("");
 const [timeError, setTimeError] = useState("");
@@ -26,12 +40,7 @@ const [timeError, setTimeError] = useState("");
   const [bookingStatus, setBookingStatus] = useState("idle"); // 'idle' | 'loading' | 'success' | 'error'
   const [errorMessage, setErrorMessage] = useState("");
 
-  const {
-    artistId,
-    artistName,
-    services: selectedServices = [],
-    totalAmount = 0,
-  } = location.state || {};
+
 
   // SAVE BOOKING
   const handleBooking = async () => {

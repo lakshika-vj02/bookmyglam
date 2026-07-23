@@ -25,7 +25,8 @@ function Login() {
       });
 
       const data = await res.json();
-
+      console.log("Backend Response:", data);
+      console.log("Role from Backend:", data.role);
       if (data.success) {
         // Save login session
         localStorage.setItem("isLoggedIn", "true");
@@ -97,7 +98,7 @@ function Login() {
           Don't have an account?
           <span
             style={{ color: "blue", cursor: "pointer" }}
-            onClick={() => navigate("/signup")}
+            onClick={() => navigate("/signup", { state: location.state })}
           >
             {" "}Signup
           </span>
