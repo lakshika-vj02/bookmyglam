@@ -16,6 +16,7 @@ import ArtistServices from "./pages/ArtistServices";
 import ArtistDashboard from "./pages/ArtistDashboard";
 import MyBooking from "./pages/mybooking";
 import AdminUsers from "./pages/AdminUsers";
+import AdminBookingList from "./pages/AdminBookingList";
 
 
 
@@ -118,8 +119,11 @@ element={
   path="/admin/users"
   element={<AdminUsers />}
 />
+<Route path="/admin/bookings" element={<AdminBookingList />} />
     </Routes>
+    
   );
 }
+
 
 export default App;

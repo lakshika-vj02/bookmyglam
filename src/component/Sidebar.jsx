@@ -42,10 +42,17 @@ function Sidebar() {
           </NavLink>
         </li>
           <li className="nav-item">
-          <NavLink to="/admin/artists" className="nav-link text-white d-flex align-items-center hover-overlay">
-            <FaPalette className="me-3" size={20} />
-            <span className="fs-5">Booking List</span>
-          </NavLink>
+          <NavLink
+  to="/admin/bookings"
+  className={({ isActive }) =>
+    `nav-link text-white d-flex align-items-center ${
+      isActive ? "active-menu" : "hover-overlay"
+    }`
+  }
+>
+  <FaClipboardList className="me-3" size={20} />
+  <span className="fs-5">Booking List</span>
+</NavLink>
         </li>
       
         <li className="nav-item">
