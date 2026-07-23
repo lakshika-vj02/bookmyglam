@@ -34,12 +34,12 @@ function Sidebar() {
             <span className="fs-5">Dashboard</span>
           </Link>
         </li>
-        {/* <li className="nav-item">
+        <li className="nav-item">
           <Link to="/admin/users" className="nav-link text-white d-flex align-items-center hover-overlay">
             <FaUsers className="me-3" size={20} />
             <span className="fs-5">Users</span>
           </Link>
-        </li> */}
+        </li>
           <li className="nav-item">
           <Link to="/admin/artists" className="nav-link text-white d-flex align-items-center hover-overlay">
             <FaPalette className="me-3" size={20} />
