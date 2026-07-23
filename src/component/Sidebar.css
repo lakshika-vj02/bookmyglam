@@ -1,0 +1,17 @@
+.active-menu {
+  background-color: #f472b6 !important;
+  color: white !important;
+  border-radius: 8px;
+}
+
+.hover-overlay:hover {
+  background-color: #343a40;
+  color: white;
+  border-radius: 8px;
+}
+
+/* Bootstrap ke blue active color ko override karega */
+.nav-pills .nav-link.active {
+  background-color: #f472b6 !important;
+  color: white !important;
+}

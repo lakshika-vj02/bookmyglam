@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import "./Sidebar.css";
 import { 
   FaTachometerAlt, 
   FaUsers, 
@@ -29,41 +30,46 @@ function Sidebar() {
 
       <ul className="nav nav-pills flex-column mb-auto mt-2 gap-2">
         <li className="nav-item">
-          <Link to="/admin" className="nav-link text-white d-flex align-items-center" style={{ background: '#f472b6' }}>
-            <FaTachometerAlt className="me-3" size={20} />
-            <span className="fs-5">Dashboard</span>
-          </Link>
+          <NavLink
+  to="/admin"
+  end
+  className={({ isActive }) =>
+    `nav-link text-white d-flex align-items-center ${
+      isActive ? "active-menu" : "hover-overlay"
+    }`
+  }
+></NavLink>
         </li>
         <li className="nav-item">
-          <Link to="/admin/users" className="nav-link text-white d-flex align-items-center hover-overlay">
+          <NavLink to="/admin/users" className="nav-link text-white d-flex align-items-center hover-overlay">
             <FaUsers className="me-3" size={20} />
             <span className="fs-5">Users</span>
-          </Link>
+          </NavLink>
         </li>
           <li className="nav-item">
-          <Link to="/admin/artists" className="nav-link text-white d-flex align-items-center hover-overlay">
+          <NavLink to="/admin/artists" className="nav-link text-white d-flex align-items-center hover-overlay">
             <FaPalette className="me-3" size={20} />
             <span className="fs-5">Booking List</span>
-          </Link>
+          </NavLink>
         </li>
       
         <li className="nav-item">
-          <Link to="/admin/artists" className="nav-link text-white d-flex align-items-center hover-overlay">
+          <NavLink to="/admin/artists" className="nav-link text-white d-flex align-items-center hover-overlay">
             <FaPalette className="me-3" size={20} />
             <span className="fs-5">Artists</span>
-          </Link>
+          </NavLink>
         </li>
         <li className="nav-item">
-          <Link to="/admin/services" className="nav-link text-white d-flex align-items-center hover-overlay">
+          <NavLink to="/admin/services" className="nav-link text-white d-flex align-items-center hover-overlay">
             <FaClipboardList className="me-3" size={20} />
             <span className="fs-5">Services</span>
-          </Link>
+          </NavLink>
         </li>
         <li className="nav-item">
-          <Link to="/admin/appointments" className="nav-link text-white d-flex align-items-center hover-overlay">
+          <NavLink to="/admin/appointments" className="nav-link text-white d-flex align-items-center hover-overlay">
             <FaCalendarCheck className="me-3" size={20} />
             <span className="fs-5">Appointments</span>
-          </Link>
+          </NavLink>
         </li>
       </ul>
 

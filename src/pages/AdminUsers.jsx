@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../component/Sidebar";
+import { useNavigate } from "react-router-dom";
 
 function AdminUsers() {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:5000/api/admin/users")
@@ -59,6 +61,16 @@ const handleDelete = async (id) => {
 >
     <div className="container mt-4">
       <h2>All Users</h2>
+
+      <div className="d-flex justify-content-end mb-3">
+      <button
+      
+  className="btn btn-outline-secondary"
+  onClick={() => navigate("/admin")}
+>
+  <i className="bi bi-arrow-left"></i> Dashboard
+</button>
+      </div>
       
       <div className="mb-3">
   <input
