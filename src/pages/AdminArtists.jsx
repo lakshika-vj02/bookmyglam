@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../component/Sidebar";
+import { useNavigate } from "react-router-dom";
+import PageHeader from "../component/common/PageHeader";
+import SearchBar from "../component/common/SearchBar";
 
 function AdminArtists() {
   const [artists, setArtists] = useState([]);
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:5000/artists")
@@ -14,15 +18,22 @@ function AdminArtists() {
   return (
     <div className="container-fluid">
       <div className="row">
-        
-        {/* Sidebar */}
-        <div className="col-md-2 p-0" style={{ position: 'relative' }}>
-          <Sidebar />
-        </div>
-
+      
         {/* Main Content */}
         <div className="col-md-10 p-4">
-          <h2 className="mb-4">Manage Artists</h2>
+          <PageHeader
+  title="Manage Artists"
+  subtitle="Manage all registered artists."
+  buttonText="Back"
+  buttonIcon={<i className="bi bi-arrow-left"></i>}
+  onButtonClick={() => navigate("/admin")}
+/>
+
+<SearchBar
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+  placeholder="Search Artist..."
+/>
 
           <div className="card shadow">
             <div className="card-body">

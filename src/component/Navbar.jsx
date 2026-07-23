@@ -98,7 +98,7 @@ function Navbar() {
           </ul>
 
           {/* LOGIN BUTTON */}
-          <Link
+          {/* <Link
          className="btn ms-3"
           to="/login"
           style={{
@@ -107,7 +107,42 @@ function Navbar() {
         }}
 >
   Login
-</Link>
+</Link> */}
+<li className="nav-item dropdown ms-3" style={{ listStyle: "none" }}>
+  <a
+    className="nav-link"
+    href="/#"
+    id="profileDropdown"
+    role="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    <i
+      className="bi bi-person-circle"
+      style={{ fontSize: "2rem", color: "#f472b6" }}
+    ></i>
+  </a>
+
+  <ul className="dropdown-menu dropdown-menu-end">
+    <li>
+      <Link className="dropdown-item" to="/login">
+        🔑 Login
+      </Link>
+    </li>
+
+    <li>
+      <Link className="dropdown-item" to="/My-booking">
+        📖 My Booking
+      </Link>
+    </li>
+
+    <li>
+      <button className="dropdown-item">
+        🚪 Logout
+      </button>
+    </li>
+  </ul>
+</li>
         </div>
       </div>
     </nav>

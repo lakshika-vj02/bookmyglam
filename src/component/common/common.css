@@ -1,0 +1,14 @@
+.back-btn {
+  background-color: transparent;
+  color: #ec4899;
+  border: 2px solid #ec4899;
+  border-radius: 30px;
+  padding: 8px 18px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #ec4899;
+  color: white;
+}

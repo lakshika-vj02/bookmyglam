@@ -21,7 +21,7 @@ function Sidebar() {
   };
 
   return (
-    <div className="bg-dark text-white vh-100 p-3 shadow d-flex flex-column" style={{ position: 'fixed', top: 0, left: 0, width: 'inherit', height: '100vh', overflowY: 'auto' }}>
+    <div className="sidebar bg-dark text-white vh-100 p-3 shadow d-flex flex-column" >
       <h3 className="text-center mb-4 mt-3" style={{ color: '#f472b6', fontWeight: 'bold' }}>
         <span className="me-2">💄</span> 
         Admin

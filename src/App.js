@@ -17,7 +17,8 @@ import ArtistDashboard from "./pages/ArtistDashboard";
 import MyBooking from "./pages/mybooking";
 import AdminUsers from "./pages/AdminUsers";
 import AdminBookingList from "./pages/AdminBookingList";
-
+import AdminServices from "./pages/AdminServices";
+import AdminLayout from "./component/AdminLayout";
 
 
 
@@ -93,34 +94,24 @@ element={
         }
       />
 
-      <Route
+      {/* <Route
         path="/artist-dashboard"
         element={
           <Layout>
             <ArtistDashboard />
           </Layout>
         }
-      />
+      /> */}
 
-      <Route
-        path="/admin"
-        element={
-            <AdminDashboard />
-        }
-      />
-
-      <Route
-        path="/admin/artists"
-        element={
-            <AdminArtists />
-        }
-      />
-<Route
-  path="/admin/users"
-  element={<AdminUsers />}
-/>
-<Route path="/admin/bookings" element={<AdminBookingList />} />
+  <Route path="/admin" element={<AdminLayout />}>
+  <Route index element={<AdminDashboard />} />
+  <Route path="artists" element={<AdminArtists />} />
+  <Route path="users" element={<AdminUsers />} />
+  <Route path="bookings" element={<AdminBookingList />} />
+  <Route path="services" element={<AdminServices />} />
+</Route>
     </Routes>
+    
     
   );
 }

@@ -1,9 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import Sidebar from "../component/Sidebar";
+import PageHeader from "../component/common/PageHeader";
+import SearchBar from "../component/common/SearchBar";
+import CommonTable from "../component/common/CommonTable";
+
 
 function AdminBookingList() {
 
   const [bookings, setBookings] = useState([]);
+  const [search, setSearch] = useState("");
+const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:5000/api/admin/bookings")
@@ -41,10 +47,6 @@ const updateStatus = async (id, status) => {
   return (
   <div className="row g-0">
 
-    <div className="col-md-2">
-      <Sidebar />
-    </div>
-
     <div
       className="col-md-10"
       style={{
@@ -54,8 +56,18 @@ const updateStatus = async (id, status) => {
     >
       <div className="container mt-4">
 
-        <h2>Booking List</h2>
-
+        <PageHeader
+  title="Booking List"
+  subtitle="Manage all customer bookings."
+  buttonText="Back"
+  buttonIcon={<i className="bi bi-arrow-left"></i>}
+  onButtonClick={() => navigate("/admin")}
+/>
+<SearchBar
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+  placeholder="Search Customer or Artist..."
+/>
         <table className="table table-bordered table-hover mt-4">
           <thead className="table-dark">
             <tr>

@@ -15,3 +15,20 @@
   background-color: #f472b6 !important;
   color: white !important;
 }
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background: #212529;
+  overflow-y: auto;
+}
+
+.admin-content {
+  margin-left: 260px;
+  padding: 24px;
+  flex: 1;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
