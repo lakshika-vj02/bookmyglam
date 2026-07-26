@@ -18,19 +18,38 @@ function ArtistServices() {
     fetch(`http://localhost:5000/artists/${artistId}/services`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setServices(data);
+        console.log("Fetched services data:", data);
+        if (Array.isArray(data)) {
+          setServices(data);
+        } else if (data && Array.isArray(data.services)) {
+          setServices(data.services);
+        } else if (data && Array.isArray(data.data)) {
+          setServices(data.data);
+        } else {
+          console.warn("Expected array of services but received:", data);
+          setServices([]);
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.error("Fetch error:", err);
+        setServices([]);
+      });
 
   }, [artistId]);
-  const totalAmount = services
-  .filter((service) => selectedServices.includes(service.id))
-  .reduce((total, service) => total + Number(service.price), 0);
-// Get complete details of the selected services
-const bookingServices = services.filter((service) =>
-  selectedServices.includes(service.id)
-);
+
+  const servicesList = Array.isArray(services) ? services : [];
+
+  const totalAmount = servicesList
+    .filter((service) => selectedServices.includes(service.id))
+    .reduce((total, service) => total + Number(service.price || service.base_price || 0), 0);
+
+  // Get complete details of the selected services
+  console.log("Services:", servicesList);
+  console.log("Type:", typeof servicesList);
+  console.log("Is Array:", Array.isArray(servicesList));
+  const bookingServices = servicesList.filter((service) =>
+    selectedServices.includes(service.id)
+  );
 // Handle Book Now button click
 const handleBookNow = () => {
 
@@ -90,7 +109,13 @@ const handleBookNow = () => {
         
       <div>
 
-  {services.map((service) => (
+  {servicesList.length === 0 && (
+    <div className="alert alert-info text-center my-4">
+      No services found for this artist at the moment.
+    </div>
+  )}
+
+  {servicesList.map((service) => (
 
     <div className="card shadow-sm mb-3 p-3" key={service.id}
      onClick={() => {
@@ -141,7 +166,7 @@ const handleBookNow = () => {
             color: "#f472b6", 
             fontWeight: "700"
           }}>
-           ₹ {service.price}
+           ₹ {service.price || service.base_price || 0}
            </h6>
            <p className="mb-0 text-muted">
   <i className="bi bi-clock me-2"></i>

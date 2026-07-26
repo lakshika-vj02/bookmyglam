@@ -49,15 +49,7 @@ const handleDelete = async (id) => {
 
 };
   return (
-  <div className="row g-0">
-  
-
-    {/* Main Content */}
-    <div
-      className="col-md-10"
-      style={{ marginLeft: "260px", width: "calc(100% - 260px)" }}
-    >
-      <div className="container mt-4">
+    <div className="container-fluid">
 
         <PageHeader
           title="User Management"
@@ -111,11 +103,8 @@ const handleDelete = async (id) => {
               ))}
           </tbody>
         </table>
-
-      </div>
     </div>
-  </div>
-);
+  );
 }
 
 export default AdminUsers;

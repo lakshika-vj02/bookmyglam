@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../component/Sidebar";
 import { useNavigate } from "react-router-dom";
 
 function AdminDashboard() {
@@ -41,113 +40,106 @@ function AdminDashboard() {
 
   return (
     <div className="container-fluid">
+      <h2 className="mb-4">Admin Dashboard</h2>
+
+      {/* 🔥 TOP CARDS */}
       <div className="row">
 
-        {/* Sidebar */}
-        <div className="col-md-2 p-0" style={{ position: 'relative' }}>
-          <Sidebar />
+        <div className="col-lg-3 col-md-6 mb-4">
+          <div
+            className="card text-center shadow h-100"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/admin/users")}
+          >
+            <div className="card-body d-flex flex-column justify-content-center">
+              <h6>Total Users</h6>
+              <h3 className="mb-0">{users}</h3>
+            </div>
+          </div>
         </div>
 
-        {/* Main Content */}
-        <div className="col-md-10 p-4">
-
-          <h2 className="mb-4">Admin Dashboard</h2>
-
-          {/* 🔥 TOP CARDS */}
-          <div className="row">
-
-            <div className="col-lg-3 col-md-6 mb-4">
-              <div className="card text-center shadow"
-                style={{ cursor: "pointer" }}
-  onClick={() => navigate("/admin/users")}
->
-                <div className="card-body">
-                  <h6>Total Users</h6>
-                 <h3>{users}</h3>
-                </div>
-              </div>
+        <div className="col-lg-3 col-md-6 mb-4">
+          <div
+            className="card text-center shadow h-100"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/admin/artists")}
+          >
+            <div className="card-body d-flex flex-column justify-content-center">
+              <h6>Total Artists</h6>
+              <h3 className="mb-0">{artists}</h3>
             </div>
-
-            <div className="col-lg-3 col-md-6 mb-4">
-              <div className="card text-center shadow"
-                onClick={() => navigate("/admin/artists")}
->
-                <div className="card-body">
-                  <h6>Total Artists</h6>
-                  <h3>{artists}</h3>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-3 col-md-6 mb-4">
-              <div className="card text-center shadow">
-                <div className="card-body"
-                  onClick={() => navigate("/admin/total-services")}
->
-                  <h6>Total Services</h6>
-                  <h3>{services}</h3>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-3 col-md-6 mb-4">
-              <div className="card text-center shadow">
-                <div className="card-body">
-                  <h6>Total Revenue</h6>
-                  <h3>₹{revenue}</h3>
-                </div>
-              </div>
-            </div>
-
           </div>
-
-          {/* 🔥 APPOINTMENT STATUS */}
-          <h4 className="mt-4">Appointments Status</h4>
-
-          <div className="row mt-3">
-
-            <div className="col-md-3">
-              <div className="card text-center bg-warning text-white">
-                <div className="card-body">
-                  <h6>Pending</h6>
-                  <h3>{appointments.pending || 0}</h3>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-3">
-              <div className="card text-center bg-success text-white">
-                <div className="card-body">
-                  <h6>Accepted</h6>
-                  <h3>{appointments.accepted || 0}</h3>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-3">
-              <div className="card text-center bg-danger text-white">
-                <div className="card-body">
-                  <h6>Rejected</h6>
-                  <h3>{appointments.rejected || 0}</h3>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-3">
-              <div className="card text-center bg-primary text-white">
-                <div className="card-body">
-                  <h6>Completed</h6>
-                  <h3>{appointments.completed || 0}</h3>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
         </div>
+
+        <div className="col-lg-3 col-md-6 mb-4">
+          <div
+            className="card text-center shadow h-100"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/admin/services")}
+          >
+            <div className="card-body d-flex flex-column justify-content-center">
+              <h6>Total Services</h6>
+              <h3 className="mb-0">{services}</h3>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-lg-3 col-md-6 mb-4">
+          <div className="card text-center shadow h-100">
+            <div className="card-body d-flex flex-column justify-content-center">
+              <h6>Total Revenue</h6>
+              <h3 className="mb-0">₹{revenue}</h3>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {/* 🔥 APPOINTMENT STATUS */}
+      <h4 className="mt-4 mb-3">Appointments Status</h4>
+
+      <div className="row">
+
+        <div className="col-lg-3 col-md-6 mb-4">
+          <div className="card text-center bg-warning text-white shadow h-100">
+            <div className="card-body d-flex flex-column justify-content-center">
+              <h6>Pending</h6>
+              <h3 className="mb-0">{appointments.pending || 0}</h3>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-lg-3 col-md-6 mb-4">
+          <div className="card text-center bg-success text-white shadow h-100">
+            <div className="card-body d-flex flex-column justify-content-center">
+              <h6>Accepted</h6>
+              <h3 className="mb-0">{appointments.accepted || 0}</h3>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-lg-3 col-md-6 mb-4">
+          <div className="card text-center bg-danger text-white shadow h-100">
+            <div className="card-body d-flex flex-column justify-content-center">
+              <h6>Rejected</h6>
+              <h3 className="mb-0">{appointments.rejected || 0}</h3>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-lg-3 col-md-6 mb-4">
+          <div className="card text-center bg-primary text-white shadow h-100">
+            <div className="card-body d-flex flex-column justify-content-center">
+              <h6>Completed</h6>
+              <h3 className="mb-0">{appointments.completed || 0}</h3>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );
+
 }
 
 export default AdminDashboard;
