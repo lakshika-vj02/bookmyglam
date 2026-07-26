@@ -3,11 +3,14 @@ import { useNavigate } from "react-router-dom";
 import PageHeader from "../component/common/PageHeader";
 import SearchBar from "../component/common/SearchBar";
 import CommonModal from "../component/common/CommonModal";
+import Pagination from "../component/common/Pagination";
 
 function AdminArtists() {
   const [artists, setArtists] = useState([]);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const [showModal, setShowModal] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [editId, setEditId] = useState(null);
@@ -107,6 +110,37 @@ function AdminArtists() {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleDelete = async (id) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this artist?");
+    if (!confirmDelete) return;
+
+    try {
+      const response = await fetch(`http://localhost:5000/artists/${id}`, {
+        method: "DELETE",
+      });
+      const data = await response.json();
+      if (data.success) {
+        alert("Artist Deleted Successfully");
+        setArtists(artists.filter((artist) => artist.id !== id));
+      } else {
+        alert(data.message || "Failed to delete artist");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const filteredArtists = artists.filter(
+    (artist) =>
+      (artist.name && artist.name.toLowerCase().includes(search.toLowerCase())) ||
+      (artist.specialty && artist.specialty.toLowerCase().includes(search.toLowerCase()))
+  );
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentArtists = filteredArtists.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredArtists.length / itemsPerPage);
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -132,9 +166,27 @@ function AdminArtists() {
 
           <SearchBar
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setCurrentPage(1);
+            }}
             placeholder="Search Artist..."
           />
+          <div className="d-flex justify-content-end align-items-center mb-3">
+            <label className="me-2 mb-0">Rows per page:</label>
+            <select
+              className="form-select w-auto"
+              value={itemsPerPage}
+              onChange={(e) => {
+                setItemsPerPage(Number(e.target.value));
+                setCurrentPage(1);
+              }}
+            >
+              <option value={5}>5</option>
+              <option value={10}>10</option>
+              <option value={20}>20</option>
+            </select>
+          </div>
           <CommonModal
             show={showModal}
             title={isEdit ? "Edit Artist" : "Add Artist"}
@@ -246,8 +298,8 @@ function AdminArtists() {
                   </tr>
                 </thead>
                 <tbody>
-                  {artists.length > 0 ? (
-                    artists.map((artist) => (
+                  {currentArtists.length > 0 ? (
+                    currentArtists.map((artist) => (
                       <tr key={artist.id}>
                         <td>
                           <img
@@ -267,7 +319,10 @@ function AdminArtists() {
                             <i className="bi bi-pencil-square"></i>
                           </button>
 
-                          <button className="btn btn-danger btn-sm">
+                          <button
+                            className="btn btn-danger btn-sm"
+                            onClick={() => handleDelete(artist.id)}
+                          >
                             <i className="bi bi-trash"></i>
                           </button>
                         </td>
@@ -282,6 +337,11 @@ function AdminArtists() {
               </table>
             </div>
           </div>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </div>
     </div>
