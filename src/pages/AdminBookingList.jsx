@@ -2,7 +2,8 @@ import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import PageHeader from "../component/common/PageHeader";
 import SearchBar from "../component/common/SearchBar";
-import CommonTable from "../component/common/CommonTable";
+// import CommonTable from "../component/common/CommonTable";
+import Pagination from "../component/common/Pagination";
 
 
 function AdminBookingList() {
@@ -10,6 +11,8 @@ function AdminBookingList() {
   const [bookings, setBookings] = useState([]);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
+const [itemsPerPage, setItemsPerPage] = useState(10);
 
   useEffect(() => {
     fetch("http://localhost:5000/api/admin/bookings")
@@ -44,6 +47,28 @@ function AdminBookingList() {
       console.error(error);
     }
   };
+  const filteredBookings = bookings.filter((booking) => {
+  const customerName = (booking.customer_name ?? "").toLowerCase();
+  const artistName = (booking.artist_name ?? "").toLowerCase();
+  const searchText = search.toLowerCase();
+
+  return (
+    customerName.includes(searchText) ||
+    artistName.includes(searchText)
+  );
+});
+
+const indexOfLastItem = currentPage * itemsPerPage;
+const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+const currentBookings = filteredBookings.slice(
+  indexOfFirstItem,
+  indexOfLastItem
+);
+
+const totalPages = Math.ceil(
+  filteredBookings.length / itemsPerPage
+);
   return (
     <div className="container-fluid">
 
@@ -56,9 +81,28 @@ function AdminBookingList() {
           />
           <SearchBar
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+               setCurrentPage(1);
+            }}
             placeholder="Search Customer or Artist..."
           />
+          <div className="d-flex justify-content-end align-items-center mb-3">
+  <label className="me-2 mb-0">Rows per page:</label>
+
+  <select
+    className="form-select w-auto"
+    value={itemsPerPage}
+    onChange={(e) => {
+      setItemsPerPage(Number(e.target.value));
+      setCurrentPage(1);
+    }}
+  >
+    <option value={5}>5</option>
+    <option value={10}>10</option>
+    <option value={20}>20</option>
+  </select>
+</div>
           <table className="table table-bordered table-hover mt-4">
             <thead className="table-dark">
               <tr>
@@ -75,7 +119,7 @@ function AdminBookingList() {
             </thead>
 
             <tbody>
-              {bookings.map((booking) => {
+              {currentBookings.map((booking) => {
                 const serviceList = JSON.parse(booking.services || "[]");
 
                 return (
@@ -118,6 +162,12 @@ function AdminBookingList() {
               })}
             </tbody>
           </table>
+          <Pagination
+  currentPage={currentPage}
+  totalPages={totalPages}
+  setCurrentPage={setCurrentPage}
+/>
+
     </div>
   );
 }

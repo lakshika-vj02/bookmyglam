@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PageHeader from "../component/common/PageHeader";
 import SearchBar from "../component/common/SearchBar";
+import Pagination from "../component/common/Pagination";
 
 function AdminUsers() {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
-
+  const [currentPage, setCurrentPage] = useState(1);
+const [itemsPerPage, setItemsPerPage] = useState(10);
   useEffect(() => {
     fetch("http://localhost:5000/api/admin/users")
       .then((res) => res.json())
@@ -48,6 +50,21 @@ const handleDelete = async (id) => {
   }
 
 };
+const filteredUsers = users.filter(
+  (user) =>
+    user.name.toLowerCase().includes(search.toLowerCase()) ||
+    user.email.toLowerCase().includes(search.toLowerCase())
+);
+
+const indexOfLastItem = currentPage * itemsPerPage;
+const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+const currentUsers = filteredUsers.slice(
+  indexOfFirstItem,
+  indexOfLastItem
+);
+
+const totalPages = Math.ceil(filteredUsers.length / itemsPerPage);
   return (
     <div className="container-fluid">
 
@@ -61,9 +78,27 @@ const handleDelete = async (id) => {
 
         <SearchBar
   value={search}
-  onChange={(e) => setSearch(e.target.value)}
+  onChange={(e) =>{setSearch(e.target.value);
+   setCurrentPage(1);
+  }}
   placeholder="Search by Name or Email..."
 />
+<div className="d-flex justify-content-end align-items-center mb-3">
+  <label className="me-2 mb-0">Rows per page:</label>
+
+  <select
+    className="form-select w-auto"
+    value={itemsPerPage}
+    onChange={(e) => {
+      setItemsPerPage(Number(e.target.value));
+      setCurrentPage(1);
+    }}
+  >
+    <option value={5}>5</option>
+    <option value={10}>10</option>
+    <option value={20}>20</option>
+  </select>
+</div>
 
         <table className="table table-bordered">
           <thead>
@@ -78,13 +113,7 @@ const handleDelete = async (id) => {
           </thead>
 
           <tbody>
-            {users
-              .filter(
-                (user) =>
-                  user.name.toLowerCase().includes(search.toLowerCase()) ||
-                  user.email.toLowerCase().includes(search.toLowerCase())
-              )
-              .map((user) => (
+            {currentUsers.map((user) => (
                 <tr key={user.id}>
                   <td>{user.id}</td>
                   <td>{user.name}</td>
@@ -103,6 +132,11 @@ const handleDelete = async (id) => {
               ))}
           </tbody>
         </table>
+        <Pagination
+  currentPage={currentPage}
+  totalPages={totalPages}
+  setCurrentPage={setCurrentPage}
+/>
     </div>
   );
 }
