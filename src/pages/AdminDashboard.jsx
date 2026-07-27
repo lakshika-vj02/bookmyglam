@@ -96,42 +96,62 @@ function AdminDashboard() {
       </div>
 
       {/* 🔥 APPOINTMENT STATUS */}
-      <h4 className="mt-4 mb-3">Appointments Status</h4>
+      <h4 className="mt-4 mb-3">Appointments Status (KPI Cards)</h4>
 
       <div className="row">
 
         <div className="col-lg-3 col-md-6 mb-4">
-          <div className="card text-center bg-warning text-white shadow h-100">
-            <div className="card-body d-flex flex-column justify-content-center">
-              <h6>Pending</h6>
-              <h3 className="mb-0">{appointments.pending || 0}</h3>
+          <div 
+            className="card text-center bg-warning text-dark shadow h-100 border-0" 
+            style={{ cursor: "pointer", borderRadius: "12px" }}
+            onClick={() => navigate("/admin/bookings")}
+          >
+            <div className="card-body d-flex flex-column justify-content-center py-4">
+              <h6 className="fw-bold mb-2"><i className="bi bi-clock-history me-2"></i>Pending</h6>
+              <h2 className="mb-0 fw-bold">{(appointments.pending || 0) + (appointments.Pending || 0)}</h2>
             </div>
           </div>
         </div>
 
         <div className="col-lg-3 col-md-6 mb-4">
-          <div className="card text-center bg-success text-white shadow h-100">
-            <div className="card-body d-flex flex-column justify-content-center">
-              <h6>Accepted</h6>
-              <h3 className="mb-0">{appointments.accepted || 0}</h3>
+          <div 
+            className="card text-center bg-success text-white shadow h-100 border-0" 
+            style={{ cursor: "pointer", borderRadius: "12px" }}
+            onClick={() => navigate("/admin/bookings")}
+          >
+            <div className="card-body d-flex flex-column justify-content-center py-4">
+              <h6 className="fw-bold mb-2"><i className="bi bi-check-circle-fill me-2"></i>Accepted / Confirmed</h6>
+              <h2 className="mb-0 fw-bold">
+                {(appointments.accepted || 0) + (appointments.confirmed || 0) + (appointments.Accepted || 0) + (appointments.Confirmed || 0)}
+              </h2>
             </div>
           </div>
         </div>
 
         <div className="col-lg-3 col-md-6 mb-4">
-          <div className="card text-center bg-danger text-white shadow h-100">
-            <div className="card-body d-flex flex-column justify-content-center">
-              <h6>Rejected</h6>
-              <h3 className="mb-0">{appointments.rejected || 0}</h3>
+          <div 
+            className="card text-center bg-danger text-white shadow h-100 border-0" 
+            style={{ cursor: "pointer", borderRadius: "12px" }}
+            onClick={() => navigate("/admin/bookings")}
+          >
+            <div className="card-body d-flex flex-column justify-content-center py-4">
+              <h6 className="fw-bold mb-2"><i className="bi bi-x-circle-fill me-2"></i>Rejected / Cancelled</h6>
+              <h2 className="mb-0 fw-bold">
+                {(appointments.rejected || 0) + (appointments.cancelled || 0) + (appointments.Rejected || 0) + (appointments.Cancelled || 0)}
+              </h2>
             </div>
           </div>
         </div>
 
         <div className="col-lg-3 col-md-6 mb-4">
-          <div className="card text-center bg-primary text-white shadow h-100">
-            <div className="card-body d-flex flex-column justify-content-center">
-              <h6>Completed</h6>
-              <h3 className="mb-0">{appointments.completed || 0}</h3>
+          <div 
+            className="card text-center bg-primary text-white shadow h-100 border-0" 
+            style={{ cursor: "pointer", borderRadius: "12px" }}
+            onClick={() => navigate("/admin/bookings")}
+          >
+            <div className="card-body d-flex flex-column justify-content-center py-4">
+              <h6 className="fw-bold mb-2"><i className="bi bi-check-all me-2"></i>Completed</h6>
+              <h2 className="mb-0 fw-bold">{(appointments.completed || 0) + (appointments.Completed || 0)}</h2>
             </div>
           </div>
         </div>

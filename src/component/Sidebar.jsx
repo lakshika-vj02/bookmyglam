@@ -67,12 +67,12 @@ function Sidebar() {
             <span className="fs-5">Services</span>
           </NavLink>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <NavLink to="/admin/appointments" className="nav-link text-white d-flex align-items-center hover-overlay">
             <FaCalendarCheck className="me-3" size={20} />
             <span className="fs-5">Appointments</span>
           </NavLink>
-        </li>
+        </li> */}
       </ul>
 
       <hr className="bg-secondary mt-4 mb-4" />
