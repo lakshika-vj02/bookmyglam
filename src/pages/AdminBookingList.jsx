@@ -6,6 +6,8 @@ import SearchBar from "../component/common/SearchBar";
 import Pagination from "../component/common/Pagination";
 
 
+
+
 function AdminBookingList() {
 
   const [bookings, setBookings] = useState([]);
@@ -14,15 +16,16 @@ function AdminBookingList() {
   const [currentPage, setCurrentPage] = useState(1);
 const [itemsPerPage, setItemsPerPage] = useState(10);
 
+
   useEffect(() => {
-    fetch("http://localhost:5000/api/admin/bookings")
+    fetch(`${process.env.REACT_APP_API_URL}/api/admin/bookings`)
       .then((res) => res.json())
       .then((data) => setBookings(data));
   }, []);
   const updateStatus = async (id, status) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/admin/bookings/${id}`,
+       `${process.env.REACT_APP_API_URL}/api/admin/bookings/${id}`,
         {
           method: "PUT",
           headers: {

@@ -19,7 +19,7 @@ const ServiceSubCategory = () => {
 
   // ── Fetch Level 2 subcategories ───────────────────────────
   useEffect(() => {
-    fetch(`http://localhost:5000/subcategory/${serviceId}`)
+    fetch(`${process.env.REACT_APP_API_URL}/subcategory/${serviceId}`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
@@ -35,7 +35,7 @@ const ServiceSubCategory = () => {
       });
 
     // Fetch service name
-    fetch("http://localhost:5000/services")
+    fetch(`${process.env.REACT_APP_API_URL}/services`)
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((s) => String(s.id) === String(serviceId));
@@ -57,7 +57,7 @@ const ServiceSubCategory = () => {
     if (items[subcategoryId]) return;
 
     setLoadingItems((prev) => ({ ...prev, [subcategoryId]: true }));
-    fetch(`http://localhost:5000/subcategory-items/${subcategoryId}`)
+    fetch(`${process.env.REACT_APP_API_URL}/subcategory-items/${subcategoryId}`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {

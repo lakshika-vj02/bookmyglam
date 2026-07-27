@@ -11,11 +11,11 @@ function Artists() {
   // FETCH DATABASE DATA
   useEffect(() => {
 
-    // fetch("http://localhost:5000/artists")
-    // fetch(`http://localhost:5000/artists/subcategory/${subcategoryId}`)
+    // fetch("`${process.env.REACT_APP_API_URL}/artists")
+    // fetch(``${process.env.REACT_APP_API_URL}/artists/subcategory/${subcategoryId}`)
     const url = subcategoryId
-      ? `http://localhost:5000/artists/subcategory/${subcategoryId}`
-      : "http://localhost:5000/artists";
+      ? `${process.env.REACT_APP_API_URL}/artists/subcategory/${subcategoryId}`
+      : `${process.env.REACT_APP_API_URL}/artists`;
 
     fetch(url)
       .then((res) => res.json())

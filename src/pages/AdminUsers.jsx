@@ -11,7 +11,7 @@ function AdminUsers() {
   const [currentPage, setCurrentPage] = useState(1);
 const [itemsPerPage, setItemsPerPage] = useState(10);
   useEffect(() => {
-    fetch("http://localhost:5000/api/admin/users")
+    fetch(`${process.env.REACT_APP_API_URL}/api/admin/users`)
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
@@ -26,7 +26,7 @@ const handleDelete = async (id) => {
   try {
 
     const response = await fetch(
-      `http://localhost:5000/api/admin/users/${id}`,
+      `${process.env.REACT_APP_API_URL}/api/admin/users/${id}`,
       {
         method: "DELETE",
       }

@@ -14,7 +14,7 @@ function AdminServices() {
 
   const fetchServices = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/services");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/services`);
       setServices(res.data);
     } catch (error) {
       console.log("Error fetching services:", error);
