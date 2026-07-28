@@ -1,6 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
+   const navigate = useNavigate();
+
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("role");
+    localStorage.removeItem("userId");
+    navigate("/login");
+  };
   return (
    <nav className="navbar navbar-expand-lg navbar-light bg-light py-2 shadow-sm fixed-top">
       <div className="container d-flex align-items-center">
@@ -124,23 +134,26 @@ function Navbar() {
   </a>
 
   <ul className="dropdown-menu dropdown-menu-end">
+    {!isLoggedIn && (
     <li>
       <Link className="dropdown-item" to="/login">
         🔑 Login
       </Link>
     </li>
-
+    )}
     <li>
       <Link className="dropdown-item" to="/My-booking">
         📖 My Booking
       </Link>
     </li>
 
+    {isLoggedIn && (
     <li>
-      <button className="dropdown-item">
-        🚪 Logout
+      <button className="dropdown-item" onClick={handleLogout}>
+         Logout
       </button>
     </li>
+  )}
   </ul>
 </li>
         </div>
