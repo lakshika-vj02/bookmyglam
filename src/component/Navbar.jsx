@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
    const navigate = useNavigate();
+   const userName = localStorage.getItem("name");
 
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
@@ -9,6 +10,9 @@ function Navbar() {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("role");
     localStorage.removeItem("userId");
+  localStorage.removeItem("name");
+  localStorage.removeItem("email");
+
     navigate("/login");
   };
   return (
@@ -134,14 +138,36 @@ function Navbar() {
   </a>
 
   <ul className="dropdown-menu dropdown-menu-end">
-    {!isLoggedIn && (
+    {/* {!isLoggedIn && (
     <li>
       <Link className="dropdown-item" to="/login">
         🔑 Login
       </Link>
     </li>
     )}
+    <li> */}
+    {isLoggedIn && (
+  <>
     <li>
+      <span className="dropdown-item-text fw-bold text-primary">
+        👋 {userName}
+      </span>
+    </li>
+
+    <li>
+      <hr className="dropdown-divider" />
+    </li>
+  </>
+)}
+
+{!isLoggedIn && (
+  <li>
+    <Link className="dropdown-item" to="/login">
+      🔑 Login
+    </Link>
+  </li>
+)}
+<li>
       <Link className="dropdown-item" to="/My-booking">
         📖 My Booking
       </Link>

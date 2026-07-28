@@ -34,6 +34,10 @@ function Login() {
         if (data.userId) {
           localStorage.setItem("userId", data.userId);
         }
+        localStorage.setItem("name", data.name);
+localStorage.setItem("email", data.email);
+console.log("Name from API:", data.name);
+console.log("Saved Name:", localStorage.getItem("name"));
          console.log("Login Success");
   console.log("Full Location:", location);
   console.log("Location State:", location.state);
