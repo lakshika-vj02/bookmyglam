@@ -21,7 +21,7 @@ function ArtistDashboard() {
       return;
     }
 
-    fetch(`http://localhost:5000/artists/by-user/${userId}`)
+    fetch(`${process.env.REACT_APP_API_URL}/artists/by-user/${userId}`)
       .then(res => res.json())
       .then(data => {
         if (data.success && data.artist) {
@@ -42,7 +42,7 @@ function ArtistDashboard() {
   const handleUpdate = () => {
     if (!artist) return;
     
-    fetch(`http://localhost:5000/artists/${artist.id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/artists/${artist.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ bio, specialty, base_price: basePrice, phone })

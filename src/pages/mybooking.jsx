@@ -46,7 +46,7 @@ function MyBooking() {
 
     try {
       const res = await axios.get(
-        `http://localhost:5000/bookings?customer_phone=${phone}`
+        `${process.env.REACT_APP_API_URL}/bookings?customer_phone=${phone}`
       );
       setBookings(res.data);
     } catch (err) {

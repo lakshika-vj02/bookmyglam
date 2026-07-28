@@ -15,7 +15,7 @@ function ArtistServices() {
 
   useEffect(() => {
 
-    fetch(`http://localhost:5000/artists/${artistId}/services`)
+    fetch(`${process.env.REACT_APP_API_URL}/artists/${artistId}/services`)
       .then((res) => res.json())
       .then((data) => {
         console.log("Fetched services data:", data);

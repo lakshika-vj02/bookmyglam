@@ -33,9 +33,9 @@ function AdminServices() {
 
   const fetchServices = async () => {
     try {
-      const res = await fetch("http://localhost:5000/services");
-      const data = await res.json();
-      setServices(Array.isArray(data) ? data : []);
+    const res = await fetch("http://localhost:5000/services");
+    const data = await res.json();
+    setServices(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error("Error fetching services:", error);
     }

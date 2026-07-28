@@ -43,8 +43,8 @@ function AdminArtists() {
       }
 
       const url = isEdit
-        ? `http://localhost:5000/artists/${editId}`
-        : "http://localhost:5000/artists";
+        ? `${process.env.REACT_APP_API_URL}/artists/${editId}`
+        : `${process.env.REACT_APP_API_URL}/artists`;
 
       const method = isEdit ? "PUT" : "POST";
 
@@ -58,7 +58,7 @@ function AdminArtists() {
       if (data.success) {
         alert(isEdit ? "Artist Updated Successfully" : "Artist Added Successfully");
 
-        const res = await fetch("http://localhost:5000/artists");
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/artists`);
         const artists = await res.json();
         setArtists(artists);
 
@@ -104,7 +104,7 @@ function AdminArtists() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/artists")
+    fetch(`${process.env.REACT_APP_API_URL}/artists`)
       .then((res) => res.json())
       .then((data) => setArtists(data))
       .catch((err) => console.log(err));
@@ -115,7 +115,7 @@ function AdminArtists() {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/artists/${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/artists/${id}`, {
         method: "DELETE",
       });
       const data = await response.json();

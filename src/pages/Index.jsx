@@ -7,7 +7,7 @@ function Index() {
   const [artists, setArtists] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/artists")
+    fetch(`${process.env.REACT_APP_API_URL}/artists`)
       .then((res) => res.json())
       .then((data) => setArtists(data))
       .catch((err) => console.log(err));

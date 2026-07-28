@@ -18,7 +18,7 @@ function Services() {
 
   // FETCH SERVICES
   const fetchServices = async (cat = "") => {
-    let url = "http://localhost:5000/services";
+    let url = `${process.env.REACT_APP_API_URL}/services`;
     if (cat) {
       url += `?category=${cat}`;
     }

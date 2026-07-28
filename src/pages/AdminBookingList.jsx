@@ -4,12 +4,16 @@ import PageHeader from "../component/common/PageHeader";
 import SearchBar from "../component/common/SearchBar";
 import Pagination from "../component/common/Pagination";
 
+
+
+
 function AdminBookingList() {
   const [bookings, setBookings] = useState([]);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
+
   const [statusFilter, setStatusFilter] = useState("all");
 
   useEffect(() => {
@@ -18,6 +22,7 @@ function AdminBookingList() {
 
   const fetchBookings = () => {
     fetch("http://localhost:5000/api/admin/bookings")
+    fetch(`${process.env.REACT_APP_API_URL}/api/admin/bookings`)
       .then((res) => res.json())
       .then((data) => setBookings(data))
       .catch((err) => console.error("Error fetching bookings:", err));
@@ -26,7 +31,7 @@ function AdminBookingList() {
   const updateStatus = async (id, status) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/admin/bookings/${id}`,
+       `${process.env.REACT_APP_API_URL}/api/admin/bookings/${id}`,
         {
           method: "PUT",
           headers: {
