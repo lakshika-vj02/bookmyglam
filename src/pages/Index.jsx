@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Features from "../component/Features";
+import heroBg from "../assets/hero-bg.jpg";
 
 function Index() {
 
@@ -21,7 +22,7 @@ function Index() {
   style={{
     minHeight: "90vh",
     backgroundImage:
-      "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9')",
+      `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${heroBg})`,
     backgroundSize: "cover",
     backgroundPosition: "center"
   }}
