@@ -128,10 +128,20 @@ const ServiceSubCategory = () => {
                   }}
                 >
                   {/* ── Subcategory Header (clickable) ── */}
-                  <div
+                  {/* <div
                     onClick={() => handleSubcategoryClick(item.id)}
                     style={{ cursor: "pointer" }}
-                  >
+                  > */}
+                  <div
+  onClick={() => {
+    if (Number(item.itemCount) > 0) {
+      handleSubcategoryClick(item.id);
+    }
+  }}
+  style={{
+    cursor: Number(item.itemCount) > 0 ? "pointer" : "default"
+  }}
+>
                     {/* IMAGE or emoji */}
                     {item.image ? (
                       <img
@@ -159,10 +169,16 @@ const ServiceSubCategory = () => {
                     <div className="card-body p-4">
                       <div className="d-flex justify-content-between align-items-center mb-1">
                         <h5 className="fw-bold mb-0">{item.subcategory_name}</h5>
-                        <i
+                        {/* <i
                           className={`bi ${isExpanded ? "bi-chevron-up" : "bi-chevron-down"}`}
                           style={{ color: "#f472b6", fontSize: "1.1rem" }}
-                        ></i>
+                        ></i> */}
+                        {Number(item.itemCount) > 0 && (
+  <i
+    className={`bi ${isExpanded ? "bi-chevron-up" : "bi-chevron-down"}`}
+    style={{ color: "#f472b6", fontSize: "1.1rem" }}
+  ></i>
+)}
                       </div>
                       <p className="text-muted small mb-3">{item.description}</p>
 

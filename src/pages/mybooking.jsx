@@ -57,6 +57,25 @@ function MyBooking() {
       setLoading(false);
     }
   };
+  const cancelBooking = async (bookingId) => {
+  const confirmCancel = window.confirm(
+    "Are you sure you want to cancel this booking?"
+  );
+
+  if (!confirmCancel) return;
+  try {
+    await axios.put(
+      `${process.env.REACT_APP_API_URL}/bookings/${bookingId}/cancel`
+    );
+
+    alert("Booking cancelled successfully.");
+
+    handleSearch(); // Refresh bookings
+  } catch (err) {
+    console.error(err);
+    alert("Unable to cancel booking.");
+  }
+};
 
   return (
     <div className="container py-5" style={{ marginTop: "80px", maxWidth: "800px" }}>
@@ -111,12 +130,19 @@ function MyBooking() {
                   </h5>
                   <span
                     className={`badge ${
-                      booking.status === "pending" ? "bg-warning text-dark" : "bg-success"
-                    } px-3 py-2`}
+  booking.status === "pending"
+    ? "bg-warning text-dark"
+    : booking.status === "confirmed"
+    ? "bg-success"
+    : booking.status === "cancelled"
+    ? "bg-danger"
+    : "bg-secondary"
+} px-3 py-2`}
                     style={{ borderRadius: "8px" }}
                   >
                     {booking.status?.toUpperCase()}
                   </span>
+                 
                 </div>
 
                 {/* Booking Details Grid */}
@@ -165,6 +191,7 @@ function MyBooking() {
                 {/* Footer with Price and Payment Status */}
                 <div className="border-top pt-3 d-flex justify-content-between align-items-center">
                   <div>
+                    
                     <strong className="text-muted">Payment:</strong>{" "}
                     {booking.payment_method} (
                     <span
@@ -180,6 +207,17 @@ function MyBooking() {
                     Total: ₹{booking.total_price}
                   </div>
                 </div>
+                 {booking.status === "pending" && (
+  <div className="text-end mt-3">
+  <button
+  className="btn btn-danger"
+  onClick={() => cancelBooking(booking.id)}
+>
+  <i className="bi bi-x-circle me-2"></i>
+  Cancel Booking
+</button>
+  </div>
+)}
               </div>
             );
           })}
