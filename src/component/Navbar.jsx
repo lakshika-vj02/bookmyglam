@@ -149,7 +149,8 @@ function Navbar() {
     {isLoggedIn && (
   <>
     <li>
-      <span className="dropdown-item-text fw-bold text-primary">
+      <span className="dropdown-item-text fw-bold "
+      style={{color:"#ff66cc"}}>
         👋 {userName}
       </span>
     </li>
